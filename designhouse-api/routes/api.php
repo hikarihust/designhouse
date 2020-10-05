@@ -1,6 +1,14 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function() {
-    return response()->json(['message' => 'Hello World!'], 200);
+// Public routes
+
+// Route group for authenticated users only
+Route::group(['middleware' => ['auth:api']], function(){
+
+});
+
+// Routes for guests only
+Route::group(['middleware' => ['guest:api']], function(){
+    Route::post('register', 'Auth\RegisterController@register');
 });

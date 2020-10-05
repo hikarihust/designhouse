@@ -100,4 +100,16 @@ Setting up JWT Authentication
         config/auth.php
             'guard' => 'api', (web -> api)
             'driver' => 'jwt', (token -> jwt)
+User Registration I: Setting up the registration fields
+    Laravel MySql Spatial extension 
+    https://viblo.asia/p/geo-spatial-mysql-in-laravel-5-MdZkAAQokox
+    https://github.com/grimzy/laravel-mysql-spatial
+        composer require grimzy/laravel-mysql-spatial:^4.0
+    User Model: 
+        use Grimzy\LaravelMysqlSpatial\Eloquent\SpatialTrait;
+        use SpatialTrait;
+        protected $spatialFields = [
+            'location'
+        ];
+    php artisan migrate:fresh 
     
