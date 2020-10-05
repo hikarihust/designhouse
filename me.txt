@@ -1,0 +1,47 @@
+                                    Setting up the New Laravel Project
+
+Initial Project Setup
+    INSTALL COMPOSER
+    Composer is the dependency manager for PHP, and we will be using it to create our Laravel project 
+        as well as to install any third-party packages.
+    To install composer on Windows, simply download and run the .exe file: https://getcomposer.org/Composer-Setup.exe
+    Once completes, just open a command line and type in "Composer". You should see the help page for Composer.
+    Tạm thời tắt phần mềm diệt virut và cài đặt project laravel
+        composer create-project --prefer-dist laravel/laravel designhouse-api
+        Để vào được trang web của dự án thì cần truy cập vào trong folder public, để có thể xóa
+        được public trên link url thì có thể dùng virtual host
+        C:\xampp\apache\conf\extra\httpd-vhosts.conf
+        <VirtualHost *:80>
+            ServerAdmin designhouse.xyz
+            DocumentRoot "C:/xampp/htdocs/designhouse/designhouse-api/public"
+            ServerName designhouse.xyz
+            ErrorLog "logs/designhouse.xyz-error.log"
+            CustomLog "logs/designhouse.xyz-access.log" common
+            <Directory "/">
+                Deny from all
+                Allow from 127.0.0.1
+            </Directory>
+        </VirtualHost>
+    - Remove public trên URL
+    C:\Windows\System32\drivers\etc -----------> hosts
+        127.0.0.1       designhouse.xyz
+	app/Models/User.php 
+    config\auth.php 
+        'providers' => [
+            'users' => [
+                'driver' => 'eloquent',
+                'model' => App\Models\User::class,
+            ]
+        ],
+    routes/api.php 
+        <?php
+        use Illuminate\Support\Facades\Route;
+
+        Route::get('/', function() {
+            return response()->json(['message' => 'Hello World!'], 200);
+        });
+    http://designhouse.xyz/api
+        {
+            "message": "Hello World!"
+        }
+    
