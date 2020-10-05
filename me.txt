@@ -73,3 +73,31 @@ SMTP Setting
         MAIL_PASSWORD=4f297b23303323
         MAIL_ENCRYPTION=tls
     
+        ==================================================================================================
+
+                            Authenticating API users in Laravel with JWT
+
+Setting up JWT Authentication
+    jwt-auth
+    https://github.com/tymondesigns/jwt-auth
+    jwt-auth install via composer 
+    https://jwt-auth.readthedocs.io/en/develop/laravel-installation/
+        composer require tymon/jwt-auth
+    Trường hợp có lỗi Allowed memory size of 1610612736 bytes exhausted
+        thì khắc phục như sau:
+        php.iniのmemory_limitの設定値を出力する
+            512M
+        512M割り当てられていました。 memory_limit = -1とするとメモリ割り当てを無制限にすることができます。
+        sudo vi /etc/php.ini
+        php.ini
+            memory_limit = -1  ; -1に変更
+    Publish the config
+        php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+    Generate secret key
+        php artisan jwt:secret
+    Update User model
+    Configure Auth guard
+        config/auth.php
+            'guard' => 'api', (web -> api)
+            'driver' => 'jwt', (token -> jwt)
+    
