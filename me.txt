@@ -112,4 +112,28 @@ User Registration I: Setting up the registration fields
             'location'
         ];
     php artisan migrate:fresh 
+User Registration II: Registering the user 
+    composer create-project --prefer-dist laravel/laravel designhouse-api
+    composer require laravel/ui
+    php artisan ui vue --auth
+    register() là hàm được kế thừa từ vendor\laravel\ui\auth-backend\RegistersUsers.php
+    {{BASE_URL}}/register
+    Body -> raw 
+        {
+            "username": "june",
+            "name": "June May",
+            "email": "june@email.com",
+            "password": "password",
+            "password_confirmation": "password"
+        }
+    https://stackoverflow.com/questions/63807930/target-class-controller-does-not-exist-laravel-8
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
+        ->
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace('App\Http\Controllers')
+            ->group(base_path('routes/api.php'));
     
