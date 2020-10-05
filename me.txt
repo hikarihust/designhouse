@@ -148,4 +148,13 @@ Email Verification I: Setting up the user activation process
             "password_confirmation": "password"
         }
     check mail: https://mailtrap.io/inboxes/1042943/messages/1887647561
+Email Verification II: Customizing the verification email notification
+    http://designhouse.xyz/api/verification/verify?expires=1601921602&hash=1b2404cd9601006d56dcee5f06c9e7a01ec03c0d&id=5&signature=388ecd16801f5322b4b83bb5f662a9e7a38ee7db139d4fd4c4a450ebbc25ee2e
+    It is because APP_URL=http://designhouse.xyz(.env)
+    php artisan make:notification VerifyEmail
+    .env 
+        CLIENT_URL=http://designhouse.xyz:3000
+    php artisan migrate:fresh 
+    {{BASE_URL}}/register
+    http://designhouse.xyz:3000/verification/verify?expires=1601923981&user=1&signature=d6ca65980962883864f21487ce2f165c8c87354dfbfc8f9ed3682a0402a69631
     
