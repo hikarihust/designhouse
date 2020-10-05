@@ -44,4 +44,15 @@ Initial Project Setup
         {
             "message": "Hello World!"
         }
+Setup POSTMAN
+    Import postman_collection.json
+    Test http://designhouse.xyz/api
+        Headers: 
+            Content-Type: application/json
+            Accept: application/json
+    Environments
+        Add: Environments: Designhouse
+        Key: BASE_URL
+        Value: http://designhouse.xyz/api
+    {{BASE_URL}}/
     
