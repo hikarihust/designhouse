@@ -136,4 +136,16 @@ User Registration II: Registering the user
             ->middleware('api')
             ->namespace('App\Http\Controllers')
             ->group(base_path('routes/api.php'));
+Email Verification I: Setting up the user activation process
+    .env
+    MAIL_FROM_ADDRESS=vudinhquang222@gmail.com
+    {{BASE_URL}}/register
+        {
+            "username": "peter",
+            "name": "Peter",
+            "email": "peter@email.com",
+            "password": "password",
+            "password_confirmation": "password"
+        }
+    check mail: https://mailtrap.io/inboxes/1042943/messages/1887647561
     
