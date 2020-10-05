@@ -55,4 +55,10 @@ Setup POSTMAN
         Key: BASE_URL
         Value: http://designhouse.xyz/api
     {{BASE_URL}}/
+Setup Database Connection
+    .env 
+        APP_NAME=Designhouse
+        APP_URL=http://designhouse.xyz
+        DB_DATABASE=designhouse
+    php artisan migrate 
     
