@@ -61,4 +61,15 @@ Setup Database Connection
         APP_URL=http://designhouse.xyz
         DB_DATABASE=designhouse
     php artisan migrate 
+SMTP Setting
+    https://mailtrap.io/signin
+    Inboxes -> Demo inbox
+    SMTP Settings 
+    Integrations: Laravel 
+        MAIL_MAILER=smtp
+        MAIL_HOST=smtp.mailtrap.io
+        MAIL_PORT=2525
+        MAIL_USERNAME=f12e0f4ba28372
+        MAIL_PASSWORD=4f297b23303323
+        MAIL_ENCRYPTION=tls
     
