@@ -265,4 +265,26 @@ Password Reset - Resetting the Password
     ->  "status": "Your password has been reset!"
     {{BASE_URL}}/login
         check login again
+
+        ==================================================================================================
+
+                                Updating User Profile
+
+User Profile Update
+    php artisan make:controller User/SettingsController
+    {{BASE_URL}}/login
+    {{BASE_URL}}/settings/profile
+    {
+        "tagline": "Sr. Multimedia developer",
+        "about": "I am a senior multimedia developer at IconX.",
+        "name": "Larry Keith",
+        "formatted_address": "Airport Road Montreal QC Canada",
+        "location": {
+            "latitude": 45.458507,
+            "longitude": -73.753252
+        },
+        "available_to_hire": true
+    }
+    SELECT ST_AsText(location) AS location from designhouse.users where id=1;
+    https://qiita.com/nkojima/items/bb21c72858606dedd817
     
