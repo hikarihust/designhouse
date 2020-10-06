@@ -157,4 +157,8 @@ Email Verification II: Customizing the verification email notification
     php artisan migrate:fresh 
     {{BASE_URL}}/register
     http://designhouse.xyz:3000/verification/verify?expires=1601923981&user=1&signature=d6ca65980962883864f21487ce2f165c8c87354dfbfc8f9ed3682a0402a69631
+Email Verification III: Resending the verification email
+    {{BASE_URL}}/verification/resend
+    Please click the button below to verify your email address.
+    http://designhouse.xyz:3000/verification/verify?expires=1601949944&user=1&signature=c085a22c25fd53e9a6e93bc1941f7a94fbd8ad2e265b99c1bea386166e7e0092
     
