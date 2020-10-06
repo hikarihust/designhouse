@@ -253,5 +253,16 @@ Password Reset - Sending the reset email
         }
     ->
         "status": "We have emailed your password reset link!"
-        http://designhouse.xyz:3000/password/reset/94270429769b1e87e1fd247f194da2c9f84ecd91e81cc88f6238768a6cc60ad2?email=june%40email.com
+        http://designhouse.xyz:3000/password/reset/fde4d3385a65ec6cc200c49139c731866e53ebd779039d30de80bebddf174937?email=june%40email.com
+Password Reset - Resetting the Password
+    {{BASE_URL}}/password/reset
+        {
+            "token": "fde4d3385a65ec6cc200c49139c731866e53ebd779039d30de80bebddf174937",
+            "email": "june@email.com",
+            "password": "password",
+            "password_confirmation": "password"
+        }
+    ->  "status": "Your password has been reset!"
+    {{BASE_URL}}/login
+        check login again
     
