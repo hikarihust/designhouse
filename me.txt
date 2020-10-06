@@ -244,4 +244,6 @@ The famous "ME" endpoint
     {{BASE_URL}}/me -> {}
 Introducing API Resources
     php artisan make:resource UserResource
+Password Reset - Customising the Email Notification
+    php artisan make:notification ResetPassword
     
