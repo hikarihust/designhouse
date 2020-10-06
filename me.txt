@@ -219,4 +219,27 @@ User Logout
             Token: {{TOKEN}}
             Tests: pm.environment.set("TOKEN", "")
         -> "message": "Logged out successfully!"
+The famous "ME" endpoint
+    php artisan make:controller User/MeController
+    {{BASE_URL}}/login
+    {{BASE_URL}}/me
+    ->
+        {
+            "user": {
+                "id": 1,
+                "username": "june",
+                "name": "June May",
+                "email": "june@email.com",
+                "email_verified_at": "2020-10-06T01:26:02.000000Z",
+                "tagline": null,
+                "about": null,
+                "location": null,
+                "formatted_address": null,
+                "available_to_hire": 0,
+                "created_at": "2020-10-06T01:17:17.000000Z",
+                "updated_at": "2020-10-06T01:26:02.000000Z"
+            }
+        }
+    {{BASE_URL}}/logout
+    {{BASE_URL}}/me -> {}
     
