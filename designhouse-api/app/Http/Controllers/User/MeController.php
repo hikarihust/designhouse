@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Resources\UserResource;
 
 class MeController extends Controller
 {
@@ -11,7 +12,8 @@ class MeController extends Controller
     {
         if(auth()->check()){
             $user = auth()->user();
-            return response()->json(["user" => auth()->user()], 200);
+            return new UserResource($user);
+            // return response()->json(["user" => auth()->user()], 200);
         }
         return response()->json(null, 401);
     }

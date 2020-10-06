@@ -242,4 +242,6 @@ The famous "ME" endpoint
         }
     {{BASE_URL}}/logout
     {{BASE_URL}}/me -> {}
+Introducing API Resources
+    php artisan make:resource UserResource
     
