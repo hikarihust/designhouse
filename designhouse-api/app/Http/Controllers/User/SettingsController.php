@@ -9,6 +9,8 @@ use App\Http\Resources\UserResource;
 use App\Models\User;
 use Grimzy\LaravelMysqlSpatial\Eloquent\SpatialTrait;
 use Illuminate\Support\Facades\DB;
+use App\Rules\MatchOldPassword;
+use App\Rules\CheckSamePassword;
 
 class SettingsController extends Controller
 {
@@ -43,6 +45,15 @@ class SettingsController extends Controller
 
     public function updatePassword(Request $request)
     {
+        $this->validate($request, [
+            'current_password' => ['required', new MatchOldPassword],
+            'password' => ['required', 'confirmed', 'min:6', new CheckSamePassword],
+        ]);
 
+        $request->user()->update([
+            'password' => bcrypt($request->password)
+        ]);
+
+        return response()->json(['message' => 'Password updated'], 200);
     }
 }

@@ -287,4 +287,10 @@ User Profile Update
     }
     SELECT ST_AsText(location) AS location from designhouse.users where id=1;
     https://qiita.com/nkojima/items/bb21c72858606dedd817
+User Password Update
+    php artisan make:rule MatchOldPassword
+    php artisan make:rule CheckSamePassword
+    {{BASE_URL}}/settings/password
+    ->  "message": "Password updated"
+    {{BASE_URL}}/login to check login 
     
