@@ -246,4 +246,12 @@ Introducing API Resources
     php artisan make:resource UserResource
 Password Reset - Customising the Email Notification
     php artisan make:notification ResetPassword
+Password Reset - Sending the reset email
+    {{BASE_URL}}/password/email
+        {
+            "email": "june@email.com"
+        }
+    ->
+        "status": "We have emailed your password reset link!"
+        http://designhouse.xyz:3000/password/reset/94270429769b1e87e1fd247f194da2c9f84ecd91e81cc88f6238768a6cc60ad2?email=june%40email.com
     
