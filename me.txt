@@ -201,4 +201,22 @@ Email Verification Test
             "token_type": "bearer",
             "expires_in": 1601962910
         }
+User Logout
+    {{BASE_URL}}/logout
+        -> "message": "Unauthenticated."
+    {{BASE_URL}}/login
+        -> token value 
+    {{BASE_URL}}/logout
+        Authentication: Bearer Token
+        Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXNpZ25ob3VzZS54eXpcL2FwaVwvbG9naW4iLCJpYXQiOjE2MDE5NjE1NzcsImV4cCI6MTYwMTk2NTE3NywibmJmIjoxNjAxOTYxNTc3LCJqdGkiOiJIbUNTckZGQ3FEV0xpdXF5Iiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.hgB7VHHtQWWFxLcV5HUQ4Xo_qqO0niHqXfCgm46-d1U
+        -> "message": "Logged out successfully!"
+    Set TOKEN:
+        {{BASE_URL}}/login
+            Tests
+            pm.environment.set("TOKEN", pm.response.json().token)
+        {{BASE_URL}}/logout
+            Authentication: Bearer Token
+            Token: {{TOKEN}}
+            Tests: pm.environment.set("TOKEN", "")
+        -> "message": "Logged out successfully!"
     
