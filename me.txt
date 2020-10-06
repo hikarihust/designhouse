@@ -188,4 +188,17 @@ User Login: Issuing JWT tokens
         "token_type": "bearer",
         "expires_in": 1601957122
     }
+Email Verification Test
+    {{BASE_URL}}/register
+    {{BASE_URL}}/login
+        -> "message": "You need to verify your email account"
+    {{BASE_URL}}/verification/verify/3?expires=1601962724&signature=3711778d3469d7ba51632a4620a03353533ffe351a57bc865c8815f5a9139b45
+        -> "message": "Email successfully verified"
+    {{BASE_URL}}/login
+    ->
+        {
+            "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXNpZ25ob3VzZS54eXpcL2FwaVwvbG9naW4iLCJpYXQiOjE2MDE5NTkzMTAsImV4cCI6MTYwMTk2MjkxMCwibmJmIjoxNjAxOTU5MzEwLCJqdGkiOiJQcXhiaU80UUh4QXRTcmppIiwic3ViIjozLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.LYUtAbPlxGI7FGfDIRivnnzCVnG8vweSilrEcAOFME8",
+            "token_type": "bearer",
+            "expires_in": 1601962910
+        }
     
