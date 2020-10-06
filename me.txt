@@ -159,6 +159,21 @@ Email Verification II: Customizing the verification email notification
     http://designhouse.xyz:3000/verification/verify?expires=1601923981&user=1&signature=d6ca65980962883864f21487ce2f165c8c87354dfbfc8f9ed3682a0402a69631
 Email Verification III: Resending the verification email
     {{BASE_URL}}/verification/resend
+        -> verification link resent
     Please click the button below to verify your email address.
     http://designhouse.xyz:3000/verification/verify?expires=1601949944&user=1&signature=c085a22c25fd53e9a6e93bc1941f7a94fbd8ad2e265b99c1bea386166e7e0092
+Email Verification IV: Activating the user's account
+    Route::post('verification/verify/{user}', 'Auth\VerificationController@verify')->name('verification.verify'); (thêm {user})
+    php artisan migrate:fresh
+    {{BASE_URL}}/register
+    {{BASE_URL}}/verification/resend
+         "status": "verification link resent"
+    {{BASE_URL}}/verification/verify/1?expires=1601950637&signature=df301ae5a969e7b91b847a000faaeaee36d312f514d0efb69383a2e66fd3a91cZ (Nhận qua mail khi 
+        đăng ký hoặc resend)
+        ->  "message": "Email successfully verified"
+            "message": "Email address already verified"
+    {{BASE_URL}}/verification/resend
+        -> "message": "Email address already verified"
+    Database users table:
+        email_verified_at: 2020-10-06 01:35:43
     
