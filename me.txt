@@ -500,4 +500,12 @@ Adding Tags to Designs
         }
     php artisan migrate:rollback 
     php artisan migrate 
+
+        ==================================================================================================
+
+                                    Laravel Repository Pattern
     
+Add Index Methods to Users and Designs
+    php artisan make:controller User/UserController 
+    {{BASE_URL}}/users
+    {{BASE_URL}}/designs
