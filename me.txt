@@ -463,5 +463,14 @@ API Resource for Designs and generating image URL's
     https://viblo.asia/p/laravel-resource-api-XL6lA4g4Zek
     {{BASE_URL}}/designs/2
     public: http://designhouse.xyz/storage/uploads/designs/thumbnail/1602047984_image1.png
+        config/filesystem.php
+        'url' => env('APP_URL').'/storage',
     s3: https://designhouse-data.s3.us-east-2.amazonaws.com/uploads/designs/thumbnail/1602051478_image1.png
+Deleting records and images from the File system
+    $design = Design::findOrFail($id);
+    モデルが見つからない時に、例外を投げたい場合もあります。これは特にルートやコントローラーの中で便利です。
+        findOrFailメソッドとクエリの最初の結果を取得するfirstOrFailメソッドは、該当するレコードが見つからない場合に
+        Illuminate\Database\Eloquent\ModelNotFoundException例外を投げます。
+    {{BASE_URL}}/designs/2 Delete public local
+    {{BASE_URL}}/designs/4 Delete s3 
     
