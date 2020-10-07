@@ -399,4 +399,34 @@ Saving images to Amazon s3
             https://designhouse-data.s3.us-east-2.amazonaws.com/uploads/designs/original/1602051478_image1.png
         designhouse-data/uploads/designs/thumbnail/1602051478_image1.png
             https://designhouse-data.s3.us-east-2.amazonaws.com/uploads/designs/thumbnail/1602051478_image1.png
+Setting up Queues to handle uploads
+    https://laravel.com/docs/8.x/queues
+    https://viblo.asia/p/laravel-queue-QpmleBVM5rd
+    https://viblo.asia/p/queues-and-schedules-in-laravel-gGJ59eGx5X2
+    .env 
+    QUEUE_CONNECTION=sync -> QUEUE_CONNECTION=database
+    php artisan queue:table
+    php artisan migrate
+    Check:
+        .env 
+        QUEUE_CONNECTION=sync
+        {{BASE_URL}}/designs
+            "message": "Unauthenticated."
+        {{BASE_URL}}/login
+        {{BASE_URL}}/designs
+            {
+                "image": "1602053011_image1.png",
+                "disk": "s3",
+                "user_id": 1,
+                "updated_at": "2020-10-07T06:43:31.000000Z",
+                "created_at": "2020-10-07T06:43:31.000000Z",
+                "id": 5
+            }
+        .env 
+        QUEUE_CONNECTION=database
+        {{BASE_URL}}/designs
+        check data of jobs table and designs table có danh sách queues chưa thực hiện
+    php artisan queue:work
+        check data of jobs table and designs table
+        Danh sách các queues đang chờ sẽ được thực thi 
     
