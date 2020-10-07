@@ -473,4 +473,31 @@ Deleting records and images from the File system
         Illuminate\Database\Eloquent\ModelNotFoundException例外を投げます。
     {{BASE_URL}}/designs/2 Delete public local
     {{BASE_URL}}/designs/4 Delete s3 
+Adding Tags to Designs
+    eloquent-taggable 
+    https://github.com/cviebrock/eloquent-taggable
+    1.Install the cviebrock/eloquent-taggable package via composer:
+        composer require cviebrock/eloquent-taggable
+    2.Publish the configuration file:
+        php artisan vendor:publish --provider="Cviebrock\EloquentTaggable\ServiceProvider" --tag "config"
+    3.Publish the migrations
+        php artisan vendor:publish --provider="Cviebrock\EloquentTaggable\ServiceProvider" --tag "migrations"
+    4.Finally, use artisan to run the migration to create the required tables
+        composer dump-autoload
+        php artisan migrate
+    Updating Eloquent Models
+        use Cviebrock\EloquentTaggable\Taggable;
+        use Taggable;
+    config/taggable.php
+        'normalizer'           => 'mb_strtolower',
+        =>'normalizer' => ['Illuminate\Support\Str', 'slug'],
+    {{BASE_URL}}/designs/9
+        {
+            "title": "Test tags",
+            "description": "This is a fancy 3D mobile app icon pack for free use",
+            "is_live": true,
+            "tags": ["Adobe Photoshop", "Adobe After Effects"]
+        }
+    php artisan migrate:rollback 
+    php artisan migrate 
     
