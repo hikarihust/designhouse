@@ -318,3 +318,85 @@ Installing Image Manipulation Library
         $providers: Intervention\Image\ImageServiceProvider::class
         $aliases: 'Image' => Intervention\Image\Facades\Image::class
 Resizing uploaded images
+    {{BASE_URL}}/designs -> "disk": "public",
+    {
+        "image": "1602048522_image1.png",
+        "disk": "public",
+        "user_id": 1,
+        "updated_at": "2020-10-07T05:28:42.000000Z",
+        "created_at": "2020-10-07T05:28:42.000000Z",
+        "id": 3
+    }
+Saving images to Amazon s3
+    flysystem-aws-s3-v3
+    https://github.com/thephpleague/flysystem-aws-s3-v3
+    composer require league/flysystem-aws-s3-v3
+    AWS Console longin 
+    account -> My Security Credentials -> Access keys (access key ID and secret access key)
+    .env:
+        AWS_ACCESS_KEY_ID=************
+        AWS_SECRET_ACCESS_KEY=*************
+        AWS_DEFAULT_REGION=us-east-2
+        AWS_BUCKET=designhouse-data
+    s3 create bucket
+        Bucket name: designhouse-data
+        Block all public access(không check) -> Object can be public 
+        Tạo các folder cho bucket designhouse-data:
+            uploads 
+                designs 
+                    large 
+                    original
+                    thumbnail
+    Amazon S3/designhouse-data -> Permissions -> Bucket Policy -> Policy generator
+        Step 1: Select Policy Type
+            S3 Bucket Policy
+        Step 2: Add Statement(s)
+            Effect: Allow
+            Principal *
+            AWS Service: Amazon S3 
+            Actions: 
+                DeleteObject
+                GetObject
+            Amazon Resource Name (ARN): arn:aws:s3:::designhouse-data
+            Add Statement 
+            Generate Policy 
+                {
+                    "Id": "Policy1602050952940",
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                        "Sid": "Stmt1602050919345",
+                        "Action": [
+                            "s3:DeleteObject",
+                            "s3:GetObject"
+                        ],
+                        "Effect": "Allow",
+                        "Resource": "arn:aws:s3:::designhouse-data",
+                        "Principal": "*"
+                        }
+                    ]
+                }
+        "Resource": "arn:aws:s3:::designhouse-data",
+        -> "Resource": "arn:aws:s3:::designhouse-data/*",
+        Save 
+    config/site.php
+        return [
+            'upload_disk' => 'public' // 'public', 's3'
+        ];
+    {{BASE_URL}}/designs -> "disk": "s3",
+        {
+            "image": "1602051478_image1.png",
+            "disk": "s3",
+            "user_id": 1,
+            "updated_at": "2020-10-07T06:17:58.000000Z",
+            "created_at": "2020-10-07T06:17:58.000000Z",
+            "id": 4
+        }
+    Check bucket:
+        designhouse-data/uploads/designs/large/1602051478_image1.png
+            https://designhouse-data.s3.us-east-2.amazonaws.com/uploads/designs/large/1602051478_image1.png
+        designhouse-data/uploads/designs/original/1602051478_image1.png
+            https://designhouse-data.s3.us-east-2.amazonaws.com/uploads/designs/original/1602051478_image1.png
+        designhouse-data/uploads/designs/thumbnail/1602051478_image1.png
+            https://designhouse-data.s3.us-east-2.amazonaws.com/uploads/designs/thumbnail/1602051478_image1.png
+    
