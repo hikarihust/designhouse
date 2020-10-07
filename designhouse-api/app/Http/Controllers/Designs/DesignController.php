@@ -13,6 +13,7 @@ class DesignController extends Controller
     {
         $design = Design::find($id);
 
+        $this->authorize('update', $design);
         $this->validate($request, [
             'title' => ['required', 'unique:designs,title,'. $id],
             'description' => ['required', 'string', 'min:20', 'max:140']

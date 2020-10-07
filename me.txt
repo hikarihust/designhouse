@@ -432,16 +432,29 @@ Setting up Queues to handle uploads
 Updating design information
     php artisan make:controller Designs/DesignController
     {{BASE_URL}}/login
-    {{BASE_URL}}/designs/1  (upload_successful=0)
+    {{BASE_URL}}/designs/1  (upload_successful=0) -> is_live: false
         {
             "title": "Fancy UI Phone Design",
             "description": "This is a fancy 3D mobile app icon pack for free use",
             "is_live": true
         }
-    {{BASE_URL}}/designs/2  (upload_successful=1)
+    {{BASE_URL}}/designs/2  (upload_successful=1) -> is_live: true
         {
             "title": "Lorem ipsum",
             "description": "This is a fancy 3D mobile app icon pack for free use",
             "is_live": true
         }
-    
+Creating a Policy for Updating designs and customising Exception
+    https://stackoverflow.com/questions/60608732/error-to-update-laravel-5-8-to-laravel-7-0
+    app\Exceptions\Handler.php
+        use Throwable;
+        public function report(Throwable $exception);
+        public function shouldReport(Throwable $exception);
+        public function render($request, Throwable $exception);
+        public function renderForConsole($output, Throwable $exception);
+    php artisan make:policy DesignPolicy --model=Models/Design
+    Check user login hiện tại để xem ai là người update 
+    https://viblo.asia/p/policy-trong-laravel-WAyK80YkKxX
+    Đăng kí Policy: app\Providers\AuthServiceProvider.php
+    Khai báo Sử dụng trong Controller
+    {{BASE_URL}}/designs/2
