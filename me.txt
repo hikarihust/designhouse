@@ -458,3 +458,10 @@ Creating a Policy for Updating designs and customising Exception
     Đăng kí Policy: app\Providers\AuthServiceProvider.php
     Khai báo Sử dụng trong Controller
     {{BASE_URL}}/designs/2
+API Resource for Designs and generating image URL's
+    php artisan make:resource DesignResource
+    https://viblo.asia/p/laravel-resource-api-XL6lA4g4Zek
+    {{BASE_URL}}/designs/2
+    public: http://designhouse.xyz/storage/uploads/designs/thumbnail/1602047984_image1.png
+    s3: https://designhouse-data.s3.us-east-2.amazonaws.com/uploads/designs/thumbnail/1602051478_image1.png
+    
