@@ -7,8 +7,10 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Design;
 use Image;
+use File;
 // use Illuminate\Support\Facades\Log;
 
 class UploadImage implements ShouldQueue
@@ -55,6 +57,28 @@ class UploadImage implements ShouldQueue
                 ->save($thumbnail = storage_path('uploads/thumbnail/'. $filename));
 
             // store images to permanent disk
+            // original image
+            if(Storage::disk($disk)
+                ->put('uploads/designs/original/'.$filename, fopen($original_file, 'r+'))){
+                    File::delete($original_file);
+                }
+
+            // large images
+            if(Storage::disk($disk)
+                ->put('uploads/designs/large/'.$filename, fopen($large, 'r+'))){
+                    File::delete($large);
+                }
+
+            // thumbnail images
+            if(Storage::disk($disk)
+                ->put('uploads/designs/thumbnail/'.$filename, fopen($thumbnail, 'r+'))){
+                    File::delete($thumbnail);
+                }
+
+            // Update the database record with success flag
+            $this->design->update([
+                'upload_successful' => true
+            ]);
         } catch(\Exception $e){
             \Log::error($e->getMessage());
         }

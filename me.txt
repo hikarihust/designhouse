@@ -318,4 +318,3 @@ Installing Image Manipulation Library
         $providers: Intervention\Image\ImageServiceProvider::class
         $aliases: 'Image' => Intervention\Image\Facades\Image::class
 Resizing uploaded images
-    
