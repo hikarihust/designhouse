@@ -310,4 +310,11 @@ Setting up image upload Disks
 Uploading image to Temporary Disk
     {{BASE_URL}}/designs
     php artisan make:job UploadImage
-    
+Installing Image Manipulation Library
+    http://image.intervention.io/
+    composer require intervention/image 
+    Integration in Laravel
+    config/app.php
+        $providers: Intervention\Image\ImageServiceProvider::class
+        $aliases: 'Image' => Intervention\Image\Facades\Image::class
+        
