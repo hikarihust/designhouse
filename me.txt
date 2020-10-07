@@ -293,4 +293,12 @@ User Password Update
     {{BASE_URL}}/settings/password
     ->  "message": "Password updated"
     {{BASE_URL}}/login to check login 
+
+        ==================================================================================================
+
+                                    Creating and managing Designs
+    
+The Design Model and Migrations
+    php artisan make:model Design -m
+    php artisan migrate
     
