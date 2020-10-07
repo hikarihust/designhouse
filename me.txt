@@ -301,4 +301,10 @@ User Password Update
 The Design Model and Migrations
     php artisan make:model Design -m
     php artisan migrate
+Setting up image upload Disks
+    User -> Controller -> Save to Temporary Location -> Create Database Record -> Dispatch Job to Crop and Store Images 
+        -> Store Image to Disk(S3 or Local) -> Delete Temporary files -> Update Database Record
+    php artisan make:controller Designs/UploadController
+    php artisan make:migration add_fields_to_designs --table=designs 
+    php artisan migrate
     
