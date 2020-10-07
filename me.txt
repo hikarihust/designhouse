@@ -307,4 +307,7 @@ Setting up image upload Disks
     php artisan make:controller Designs/UploadController
     php artisan make:migration add_fields_to_designs --table=designs 
     php artisan migrate
+Uploading image to Temporary Disk
+    {{BASE_URL}}/designs
+    php artisan make:job UploadImage
     
