@@ -452,7 +452,7 @@ Creating a Policy for Updating designs and customising Exception
         public function shouldReport(Throwable $exception);
         public function render($request, Throwable $exception);
         public function renderForConsole($output, Throwable $exception);
-    php artisan make:policy DesignPolicy --model=Models/Design
+    php artisan make:policy DesignPolicy --model=Design
     Check user login hiện tại để xem ai là người update 
     https://viblo.asia/p/policy-trong-laravel-WAyK80YkKxX
     Đăng kí Policy: app\Providers\AuthServiceProvider.php
@@ -572,4 +572,8 @@ Create Comments and Comment API Resource
     {{BASE_URL}}/designs/9/comments
         commentable_id: 9
         commentable_type: App\Models\Design
+Updating and deleting comments
+    php artisan make:policy CommentPolicy --model=Comment
+    {{BASE_URL}}/comments/1 (PUT)
+    {{BASE_URL}}/comments/1 (DELETE)
     
