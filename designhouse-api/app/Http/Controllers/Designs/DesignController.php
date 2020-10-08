@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Storage;
 use App\Repositories\Contracts\IDesign;
 use App\Repositories\Eloquent\Criteria\{
     LatestFirst,
-    IsLive
+    IsLive,
+    ForUser
 };
 
 
@@ -29,6 +30,7 @@ class DesignController extends Controller
         $designs = $this->designs->withCriteria([
             new LatestFirst(),
             new IsLive(),
+            new ForUser(1)
         ])->all();
         return DesignResource::collection($designs);
     }
