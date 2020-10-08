@@ -554,3 +554,17 @@ Adding Eager-Loading Criteria to the Repository
     select * from `users`
     select * from `designs` where `designs`.`user_id` in (1, 2, 3)
     
+        ==================================================================================================
+
+                                    Adding Comment and Likes to the Application
+
+Setting up Comment model and Repository
+    php artisan make:model Comment -m
+    morphTo
+    https://viblo.asia/p/quan-he-da-hinh-polymorphic-relationships-trong-laravel-58-XL6lAnbm5ek
+    $table->morphs('commentable');
+        commentable_id - integer
+        commentable_type - string
+    php artisan migrate
+    php artisan make:controller Designs/CommentController
+    
