@@ -523,4 +523,8 @@ Implementing common Repository Methods
     {{BASE_URL}}/designs/1
     {{BASE_URL}}/login
     {{BASE_URL}}/designs/1
-    
+Setup and test Filter Criteria
+    flatten(): flattenメソッドは多次元コレクションを一次元化します。
+        $collection = collect(['name' => 'taylor', 'languages' => ['php', 'javascript']]);
+        -> ['taylor', 'php', 'javascript'];
+    https://packagist.org/packages/prettus/l5-repository
