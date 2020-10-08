@@ -547,4 +547,10 @@ Setup Debugging to profile API SQL Queries
     {{BASE_URL}}/users?_debug=true
     {{BASE_URL}}/users
     Arr::onlyメソッドは配列中の指定されたキー／値ペアのアイテムのみを返します。
+Adding Eager-Loading Criteria to the Repository
+    Laravel Eloquent
+    クエリの数を徹底的に減らすために、Eagerローディングを使うことができます。withメソッドを使い指定してください。
+    この操作では２つだけしかクエリが実行されません。
+    select * from `users`
+    select * from `designs` where `designs`.`user_id` in (1, 2, 3)
     
