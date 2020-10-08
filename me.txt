@@ -529,4 +529,22 @@ Setup and test Filter Criteria
         -> ['taylor', 'php', 'javascript'];
     https://packagist.org/packages/prettus/l5-repository
 Create Criterion for User's designs
+Setup Debugging to profile API SQL Queries
+    laravel-debugbar 
+    https://github.com/barryvdh/laravel-debugbar
+    Installation
+        composer require barryvdh/laravel-debugbar --dev
+    Copy the package config to your local config with the publish command
+        php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
+    http://designhouse.xyz/
+    Disable
+        .env
+        DEBUGBAR_ENABLED=false
+        php artisan config:cache
+    php artisan make:middleware ProfileJsonResponse
+    Kernel.php:
+        \App\Http\Middleware\ProfileJsonResponse::class,
+    {{BASE_URL}}/users?_debug=true
+    {{BASE_URL}}/users
+    Arr::onlyメソッドは配列中の指定されたキー／値ペアのアイテムのみを返します。
     
