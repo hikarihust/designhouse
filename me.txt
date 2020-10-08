@@ -517,4 +517,10 @@ Create a simple Repository
     https://stackoverflow.com/questions/34756954/laravel-service-provider-not-binding-to-contract
 Create the Base Repository and Interface
     php artisan make:exception ModelNotDefined
+    {{BASE_URL}}/designs
+    {{BASE_URL}}/users
+Implementing common Repository Methods
+    {{BASE_URL}}/designs/1
+    {{BASE_URL}}/login
+    {{BASE_URL}}/designs/1
     
