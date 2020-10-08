@@ -12,7 +12,8 @@ use App\Repositories\Contracts\IDesign;
 use App\Repositories\Eloquent\Criteria\{
     LatestFirst,
     IsLive,
-    ForUser
+    ForUser,
+    EagerLoad
 };
 
 
@@ -30,7 +31,8 @@ class DesignController extends Controller
         $designs = $this->designs->withCriteria([
             new LatestFirst(),
             new IsLive(),
-            new ForUser(1)
+            new ForUser(1),
+            new EagerLoad(['user', 'comments'])
         ])->all();
         return DesignResource::collection($designs);
     }

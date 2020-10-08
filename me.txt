@@ -576,4 +576,9 @@ Updating and deleting comments
     php artisan make:policy CommentPolicy --model=Comment
     {{BASE_URL}}/comments/1 (PUT)
     {{BASE_URL}}/comments/1 (DELETE)
+Solving the famous N+1 problem with Eagerloading
+    https://viblo.asia/p/laravel-resource-api-maGK740BZj2
+    whenLoaded
+    {{BASE_URL}}/designs?_debug=true
+        "nb_statements": 7,
     
