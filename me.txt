@@ -567,4 +567,9 @@ Setting up Comment model and Repository
         commentable_type - string
     php artisan migrate
     php artisan make:controller Designs/CommentController
+Create Comments and Comment API Resource
+    php artisan make:resource CommentResource
+    {{BASE_URL}}/designs/9/comments
+        commentable_id: 9
+        commentable_type: App\Models\Design
     
