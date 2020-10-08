@@ -515,4 +515,6 @@ Create a simple Repository
     php artisan make:provider RepositoryServiceProvider
     https://nickescobedo.com/906/how-to-bind-an-interface-to-an-implementation-in-laravel
     https://stackoverflow.com/questions/34756954/laravel-service-provider-not-binding-to-contract
+Create the Base Repository and Interface
+    php artisan make:exception ModelNotDefined
     
