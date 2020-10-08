@@ -8,13 +8,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Resources\DesignResource;
 use Illuminate\Support\Facades\Storage;
+use App\Repositories\Contracts\IDesign;
 
 class DesignController extends Controller
 {
+    protected $designs;
+
+    public function __construct(IDesign $designs)
+    {
+        $this->designs = $designs;
+    }
 
     public function index()
     {
-        $designs = Design::all();
+        $designs = $this->designs->all();
         return DesignResource::collection($designs);
     }
 

@@ -509,3 +509,10 @@ Add Index Methods to Users and Designs
     php artisan make:controller User/UserController 
     {{BASE_URL}}/users
     {{BASE_URL}}/designs
+Create a simple Repository
+    https://viblo.asia/p/trien-khai-repository-trong-laravel-m68Z0x6MZkG
+    https://viblo.asia/p/repository-pattern-trong-laravel-gGJ59jPaKX2
+    php artisan make:provider RepositoryServiceProvider
+    https://nickescobedo.com/906/how-to-bind-an-interface-to-an-implementation-in-laravel
+    https://stackoverflow.com/questions/34756954/laravel-service-provider-not-binding-to-contract
+    
