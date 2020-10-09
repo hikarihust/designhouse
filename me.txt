@@ -605,3 +605,14 @@ Unliking and Bootable Trait method
 One last endpoint and conclusion on Likes and Comments
     {{BASE_URL}}/designs/9/liked
    
+        ==================================================================================================
+
+                                    Setting up Designer Teams
+    Quan hệ của teams và users: N-N
+    teams   -------  team_user(members)  ------- users 
+      |                                   |
+            -------  invitations ------
+Creating the Team Models and Migrations
+    php artisan make:model Team -m
+    php artisan migrate
+    
