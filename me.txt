@@ -627,3 +627,11 @@ Update Team Information with Policies (Authorization)
     {{BASE_URL}}/teams/1 (PUT)
     {{BASE_URL}}/teams/1 (GET)
     {{BASE_URL}}/users/teams (GET)
+Associate Teams to Designs
+    php artisan make:migration add_team_id_to_designs --table=designs
+    php artisan migrate
+    {{BASE_URL}}/users/teams (GET)
+    validate required_if
+    {{BASE_URL}}/designs/9 (GET)
+    {{BASE_URL}}/users/teams (GET)
+    
