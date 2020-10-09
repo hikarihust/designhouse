@@ -615,4 +615,6 @@ One last endpoint and conclusion on Likes and Comments
 Creating the Team Models and Migrations
     php artisan make:model Team -m
     php artisan migrate
+Setting up the Team Repository, Contract and Controller
+    php artisan make:controller Teams/TeamsController
     
