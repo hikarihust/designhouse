@@ -586,4 +586,20 @@ Setting up Likes Model and Trait
     php artisan migrate
     https://viblo.asia/p/traits-in-php-and-laravel-l0rvmxzQGyqA
     https://viblo.asia/p/using-php-traits-for-laravel-eloquent-relationships-4P856doRZY3
+Unliking and Bootable Trait method
+    {{BASE_URL}}/login
+        {
+            "email": "june@email.com",
+            "password": "password123"
+        }
+    {{BASE_URL}}/designs/9/like
+    Laravel Model Events
+        https://viblo.asia/p/laravel-model-events-AyQMpJDpv0Ek
+    Với mỗi trait được sử dụng bện trong model, khi model được khởi tạo Laravel sẽ kiểm tra sự tồn tại của một 
+        phương thức đặc biệt trong trait đó - boot + <trait_name> và gọi phương thức đó nếu có.
+        bootLikeable()
+    {{BASE_URL}}/designs/6/like    (POST)
+    {{BASE_URL}}/designs/6         (DELETE)
+    SELECT * FROM designhouse.likes;
+        -> like of designs/6 Deleted 
     

@@ -5,6 +5,21 @@ use App\Models\Like;
 
 trait Likeable
 {
+    public static function bootLikeable()
+    {
+        static::deleting(function($model){
+            $model->removeLikes();
+        });
+    }
+
+    // delete likes when model is being deleted
+    public function removeLikes()
+    {
+        if($this->likes()->count()){
+            $this->likes()->delete();
+        }
+    }
+
     public function likes()
     {
         return $this->morphMany(Like::class, 'likeable');
@@ -20,6 +35,18 @@ trait Likeable
         };
 
         $this->likes()->create(['user_id' => auth()->id()]);
+    }
+
+    public function unlike()
+    {
+        if(! auth()->check()) return;
+
+        if(! $this->isLikedByUser(auth()->id())){
+            return;
+        }
+
+        $this->likes()
+            ->where('user_id', auth()->id())->delete();
     }
 
     public function isLikedByUser($user_id)
