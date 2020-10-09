@@ -602,4 +602,6 @@ Unliking and Bootable Trait method
     {{BASE_URL}}/designs/6         (DELETE)
     SELECT * FROM designhouse.likes;
         -> like of designs/6 Deleted 
-    
+One last endpoint and conclusion on Likes and Comments
+    {{BASE_URL}}/designs/9/liked
+   

@@ -91,4 +91,11 @@ class DesignController extends Controller
             'total' => $total
         ], 200);
     }
+
+    public function checkIfUserHasLiked($designId)
+    {
+        $isLiked = $this->designs->isLikedByUser($designId);
+        return response()->json(['liked' => $isLiked], 200);
+    }
+
 }
