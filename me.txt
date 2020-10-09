@@ -642,4 +642,5 @@ Team Invitations Setup - Model, routes, controllers, migration and repositories
     php artisan migrate
 Sending out team invitations
     php artisan make:mail SendInvitationToJoinTeam --markdown=emails.invitations.invite-new-user
-    
+Sending out the Invitation Emails to Guest and Existing users
+    {{BASE_URL}}/invitations/1 (POST)
