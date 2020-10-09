@@ -634,4 +634,9 @@ Associate Teams to Designs
     validate required_if
     {{BASE_URL}}/designs/9 (GET)
     {{BASE_URL}}/users/teams (GET)
-    
+Team Invitations Setup - Model, routes, controllers, migration and repositories
+    php artisan make:model Invitation -m
+    recipient() return $this->belongsTo(User::class, 'email', 'recipient_email');
+    sender() return $this->belongsTo(User::class, 'id', 'sender_id');
+    php artisan make:controller Teams/InvitationsController
+    php artisan migrate
