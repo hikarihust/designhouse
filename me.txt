@@ -622,4 +622,8 @@ Creating teams with  CREATED and DELETING Boot methods
     https://viblo.asia/p/eloquent-relationships-in-laravel-53-chap-3-DZrGNDmjkVB
     php artisan make:resource TeamResource
     {{BASE_URL}}/teams
-    
+Update Team Information with Policies (Authorization)
+    php artisan make:policy TeamPolicy --model=Team
+    {{BASE_URL}}/teams/1 (PUT)
+    {{BASE_URL}}/teams/1 (GET)
+    {{BASE_URL}}/users/teams (GET)
