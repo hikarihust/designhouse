@@ -640,3 +640,6 @@ Team Invitations Setup - Model, routes, controllers, migration and repositories
     sender() return $this->belongsTo(User::class, 'id', 'sender_id');
     php artisan make:controller Teams/InvitationsController
     php artisan migrate
+Sending out team invitations
+    php artisan make:mail SendInvitationToJoinTeam --markdown=emails.invitations.invite-new-user
+    
