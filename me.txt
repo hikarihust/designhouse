@@ -581,4 +581,9 @@ Solving the famous N+1 problem with Eagerloading
     whenLoaded
     {{BASE_URL}}/designs?_debug=true
         "nb_statements": 7,
+Setting up Likes Model and Trait
+    php artisan make:model Like -m
+    php artisan migrate
+    https://viblo.asia/p/traits-in-php-and-laravel-l0rvmxzQGyqA
+    https://viblo.asia/p/using-php-traits-for-laravel-eloquent-relationships-4P856doRZY3
     
