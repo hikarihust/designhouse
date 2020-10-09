@@ -617,4 +617,9 @@ Creating the Team Models and Migrations
     php artisan migrate
 Setting up the Team Repository, Contract and Controller
     php artisan make:controller Teams/TeamsController
+Creating teams with  CREATED and DELETING Boot methods
+    attach sync
+    https://viblo.asia/p/eloquent-relationships-in-laravel-53-chap-3-DZrGNDmjkVB
+    php artisan make:resource TeamResource
+    {{BASE_URL}}/teams
     
