@@ -658,4 +658,9 @@ Responding to and deleting an Invitation
         }
     {{BASE_URL}}/invitations/1 (POST)
     {{BASE_URL}}/invitations/1/respond (POST)
+Removing users from Teams
+    {{BASE_URL}}/teams/1/users/1 (DELETE)
+        You are the team owner
+    {{BASE_URL}}/teams/1/users/3
+        Success
     

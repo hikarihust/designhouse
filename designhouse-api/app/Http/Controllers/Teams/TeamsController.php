@@ -7,15 +7,22 @@ use Illuminate\Http\Request;
 use App\Repositories\Contracts\ITeam;
 use Illuminate\Support\Str;
 use App\Http\Resources\TeamResource;
+use App\Repositories\Contracts\IUser;
+use App\Repositories\Contracts\IInvitation;
 
 class TeamsController extends Controller
 {
 
     protected $teams;
+    protected $users;
+    protected $invitations;
 
-    public function __construct(ITeam $teams)
+    public function __construct(ITeam $teams,
+        IUser $users, IInvitation $invitations)
     {
         $this->teams = $teams;
+        $this->users = $users;
+        $this->invitations = $invitations;
     }
 
     /**
@@ -91,7 +98,8 @@ class TeamsController extends Controller
      */
     public function findBySlug($slug)
     {
-
+        $team = $this->teams->findWhereFirst('slug', $slug);
+        return new TeamResource($team);
     }
 
     /**
@@ -99,6 +107,40 @@ class TeamsController extends Controller
      */
     public function destroy($id)
     {
+        $team = $this->teams->find($id);
+        $this->authorize('delete', $team);
 
+        $team->delete();
+
+        return response()->json(['message' => 'Deleted'], 200);
+    }
+
+    public function removeFromTeam($teamId, $userId)
+    {
+        // get the team
+        $team = $this->teams->find($teamId);
+        $user = $this->users->find($userId);
+
+        // check that the user is not the owner
+        if($user->isOwnerOfTeam($team)){
+            return response()->json([
+                'message' => 'You are the team owner'
+            ], 401);
+        }
+
+        // check that the person sending the request
+        // is either the owner of the team or the person
+        // who wants to leave the team
+        if(!auth()->user()->isOwnerOfTeam($team) &&
+            auth()->id() !== $user->id
+        ){
+            return response()->json([
+                'message' => 'You cannot do this'
+            ], 401);
+        }
+
+        $this->invitations->removeUserFromTeam($team, $userId);
+
+        return response()->json(['message' => 'Success'], 200);
     }
 }
