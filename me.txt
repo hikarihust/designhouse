@@ -697,4 +697,8 @@ Setup the Chat and Messaging Model
         https://viblo.asia/p/eloquent-relationships-in-laravel-53-chap-3-DZrGNDmjkVB
     whereHas
         https://viblo.asia/p/eloquent-relationships-in-laravel-phan-3-MJykjmxyePB
+Create the Chat Controller and Repositories
+    php artisan make:controller Chats/ChatController
+    php artisan make:resource ChatResource
+    php artisan make:resource MessageResource
     
