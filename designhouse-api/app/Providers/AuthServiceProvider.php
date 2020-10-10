@@ -7,9 +7,11 @@ use Illuminate\Support\Facades\Gate;
 use App\Models\Design;
 use App\Models\Comment;
 use App\Models\Team;
+use App\Models\Invitation;
 use App\Policies\DesignPolicy;
 use App\Policies\CommentPolicy;
 use App\Policies\TeamPolicy;
+use App\Policies\InvitationPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,7 @@ class AuthServiceProvider extends ServiceProvider
         Design::class => DesignPolicy::class,
         Comment::class => CommentPolicy::class,
         Team::class => TeamPolicy::class,
+        Invitation::class => InvitationPolicy::class,
     ];
 
     /**

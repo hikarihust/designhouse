@@ -645,5 +645,17 @@ Sending out team invitations
 Sending out the Invitation Emails to Guest and Existing users
     {{BASE_URL}}/invitations/1 (POST)
 Resending Invitation to join teams
+    * Do người quản lý Team gửi đi
     {{BASE_URL}}/invitations/2/resend (POST)
+Responding to and deleting an Invitation
+    attach(), detach()
+    https://viblo.asia/p/eloquent-relationships-in-laravel-53-chap-3-DZrGNDmjkVB
+    php artisan make:policy InvitationPolicy --model=Invitation
+    {{BASE_URL}}/login
+        {
+            "email": "john@email.com",
+            "password": "password"
+        }
+    {{BASE_URL}}/invitations/1 (POST)
+    {{BASE_URL}}/invitations/1/respond (POST)
     
