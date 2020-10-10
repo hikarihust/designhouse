@@ -644,3 +644,6 @@ Sending out team invitations
     php artisan make:mail SendInvitationToJoinTeam --markdown=emails.invitations.invite-new-user
 Sending out the Invitation Emails to Guest and Existing users
     {{BASE_URL}}/invitations/1 (POST)
+Resending Invitation to join teams
+    {{BASE_URL}}/invitations/2/resend (POST)
+    
