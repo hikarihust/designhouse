@@ -504,6 +504,20 @@ Adding Tags to Designs
         ==================================================================================================
 
                                     Laravel Repository Pattern
+        
+             Model ------- Database
+               ↑↓                
+User ----- Controller          
+        ↖↘     ↑↓                
+              View            
+Controller: Business Logic + Database Queries
+
+           Interface ------- Repository
+               ↑↓                ↑↓
+User ----- Controller          Model
+        ↖↘     ↑↓                ↑↓
+              View            Database
+Controller: Business Logic Only
     
 Add Index Methods to Users and Designs
     php artisan make:controller User/UserController 
@@ -610,8 +624,8 @@ One last endpoint and conclusion on Likes and Comments
                                     Setting up Designer Teams
     Quan hệ của teams và users: N-N
     teams   -------  team_user(members)  ------- users 
-      |                                   |
-            -------  invitations ------
+      |                                            |
+            -------  invitations         -------
 Creating the Team Models and Migrations
     php artisan make:model Team -m
     php artisan migrate
@@ -663,4 +677,24 @@ Removing users from Teams
         You are the team owner
     {{BASE_URL}}/teams/1/users/3
         Success
+    
+        ==================================================================================================
+
+                                    Chat Messaging between
+
+Setup the Chat and Messaging Model
+    chats   -------  participants  ------- users 
+      |                                     |
+            -------  messages      -------
+    chats and users: N-N (belongsToMany)
+    messages belongsTo chats: 1-N
+    messages belongsTo users: 1-N
+    php artisan make:model Chat -m
+    php artisan make:model Message -m
+    SoftDeletes
+        https://viblo.asia/p/laravel-soft-delete-lam-the-nao-de-xoa-du-lieu-mot-cach-an-toan-trong-laravel-gDVK2JerKLj
+    touches
+        https://viblo.asia/p/eloquent-relationships-in-laravel-53-chap-3-DZrGNDmjkVB
+    whereHas
+        https://viblo.asia/p/eloquent-relationships-in-laravel-phan-3-MJykjmxyePB
     
