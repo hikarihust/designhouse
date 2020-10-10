@@ -701,4 +701,6 @@ Create the Chat Controller and Repositories
     php artisan make:controller Chats/ChatController
     php artisan make:resource ChatResource
     php artisan make:resource MessageResource
+Setup the Chat and Message Migrations
+    php artisan migrate
     

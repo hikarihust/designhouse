@@ -14,8 +14,23 @@ class CreateChatsTable extends Migration
     public function up()
     {
         Schema::create('chats', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->timestamps();
+        });
+
+        Schema::create('participants', function (Blueprint $table) {
+            $table->bigInteger('chat_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+
+            $table->foreign('chat_id')
+                ->references('id')
+                ->on('chats')
+                ->onDelete('cascade');
         });
     }
 
@@ -26,6 +41,7 @@ class CreateChatsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('participants');
         Schema::dropIfExists('chats');
     }
 }
