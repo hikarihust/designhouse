@@ -715,4 +715,9 @@ Marking messages as Read and Soft-Deleting
     {{BASE_URL}}/chats/1/markAsRead (PUT)
     php artisan make:policy MessagePolicy --model=Message
     {{BASE_URL}}/messages/4 (DELETE)
+Refactor the API Resource Classes and Section wrap
+    {{BASE_URL}}/chats
+    mergeWhen()
+    trashed()
+    {{BASE_URL}}/chats/1/messages (GET)
     
