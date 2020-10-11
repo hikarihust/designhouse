@@ -4,13 +4,51 @@ namespace App\Http\Controllers\Chats;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Repositories\Contracts\IChat;
+use App\Repositories\Contracts\IMessage;
+use App\Http\Resources\MessageResource;
 
 class ChatController extends Controller
 {
+    protected $chats;
+    protected $messages;
+
+    public function __construct(IChat $chats, IMessage $messages)
+    {
+        $this->chats = $chats;
+        $this->messages = $messages;
+    }
+
     // Send message to user
     public function sendMessage(Request $request)
     {
+        // validate the request
+        $this->validate($request, [
+            'recipient' => ['required'],
+            'body' => ['required']
+        ]);
 
+        $recipient = $request->recipient;
+        $user = auth()->user();
+        $body = $request->body;
+
+        // check if there is an existing chat between the auth user and the recipient
+        $chat = $user->getChatWithUser($recipient);
+
+        if(! $chat){
+            $chat = $this->chats->create([]);
+            $this->chats->createParticipants($chat->id, [$user->id, $recipient]);
+        }
+
+        // add the message to the chat
+        $message = $this->messages->create([
+            'user_id' => $user->id,
+            'chat_id' => $chat->id,
+            'body' => $body,
+            'last_read' => null
+        ]);
+
+        return new MessageResource($message);
     }
 
     // Get chats for user

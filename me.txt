@@ -703,4 +703,6 @@ Create the Chat Controller and Repositories
     php artisan make:resource MessageResource
 Setup the Chat and Message Migrations
     php artisan migrate
+Sending chat messages between users
+    {{BASE_URL}}/chats (POST)
     
