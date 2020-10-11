@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Repositories\Contracts\IChat;
 use App\Repositories\Contracts\IMessage;
 use App\Http\Resources\MessageResource;
+use App\Http\Resources\ChatResource;
 
 class ChatController extends Controller
 {
@@ -54,7 +55,8 @@ class ChatController extends Controller
     // Get chats for user
     public function getUserChats()
     {
-
+        $chats = $this->chats->getUserChats();
+        return ChatResource::collection($chats);
     }
 
     // get messages for chat

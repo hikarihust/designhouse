@@ -705,4 +705,6 @@ Setup the Chat and Message Migrations
     php artisan migrate
 Sending chat messages between users
     {{BASE_URL}}/chats (POST)
+Fetching chats for the current user
+    {{BASE_URL}}/chats (GET)
     
