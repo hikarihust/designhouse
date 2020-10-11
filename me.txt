@@ -707,4 +707,7 @@ Sending chat messages between users
     {{BASE_URL}}/chats (POST)
 Fetching chats for the current user
     {{BASE_URL}}/chats (GET)
-    
+Fetching messages for a Chat Including Trashed messages
+    withTrashed
+    https://viblo.asia/p/tim-hieu-eloquent-trong-laravel-phan-1-eloquent-model-database-QpmleBAo5rd
+    {{BASE_URL}}/chats/1/messages
