@@ -123,4 +123,12 @@ class DesignController extends Controller
         return DesignResource::collection($designs);
     }
 
+    public function getForUser($userId)
+    {
+        $designs = $this->designs
+                        ->withCriteria([new IsLive()])
+                        ->findWhere('user_id', $userId);
+        return DesignResource::collection($designs);
+    }
+
 }

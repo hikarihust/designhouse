@@ -744,4 +744,4 @@ Testing GeoSearch in Postman
 
 Fetching Designs by Slug
 Get Designs for a given team
-    
+Get Designs for a given user and User by Username
