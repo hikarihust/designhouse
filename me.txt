@@ -745,3 +745,7 @@ Testing GeoSearch in Postman
 Fetching Designs by Slug
 Get Designs for a given team
 Get Designs for a given user and User by Username
+Add Gravatar as User Profile Image
+    http://en.gravatar.com/ 
+    http://en.gravatar.com/site/implement/images/php/
+    
