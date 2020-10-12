@@ -748,4 +748,21 @@ Get Designs for a given user and User by Username
 Add Gravatar as User Profile Image
     http://en.gravatar.com/ 
     http://en.gravatar.com/site/implement/images/php/
+    gmail
+    name: vudinhquang123 
+    pwd@Quang2202
+CORS and wrap on API
+    https://viblo.asia/p/cors-jvElaBNd5kw
+    https://viblo.asia/p/cho-phep-cors-trong-laravel-QpmleJE95rd
+    laravel cors 
+    https://github.com/fruitcake/laravel-cors
+    Installation
+        composer require fruitcake/laravel-cors
+    Global usage
+        app/Http/Kernel.php
+        \Fruitcake\Cors\HandleCors::class,
+    Configuration
+        php artisan vendor:publish --tag="cors"
+    cors.php
+        'paths' => ['api/*'],
     
