@@ -766,3 +766,9 @@ CORS and wrap on API
     cors.php
         'paths' => ['api/*'],
     
+        ==================================================================================================
+
+                                    Getting started with the Frontend
+                
+UI template
+    
