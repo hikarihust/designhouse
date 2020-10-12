@@ -29,7 +29,17 @@ class UserController extends Controller
     public function search(Request $request)
     {
         $designers = $this->users->search($request);
-        return UserResource::collection($designers);
+        $designers = UserResource::collection($designers);
+
+        $distance = $this->users->distance($request);
+        foreach ($designers as $key => $value) {
+            foreach ($distance as $value1) {
+                if($value1->id == $value['id']) {
+                    $designers[$key]->dist = $value1->dist;
+                }
+            }
+        }
+        return $designers;
     }
 
 }

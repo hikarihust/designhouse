@@ -733,4 +733,8 @@ Searching Designs by multiple filters
     {{BASE_URL}}/search/designs?has_team=0&has_comments=1&q=phone&orderBy=likes
 Geographic Search - Setup the GeoSearch
     https://github.com/grimzy/laravel-mysql-spatial
+Testing GeoSearch in Postman
+    Laravel, MySQL Spatial Point distance: orderBy and get distance
+    https://stackoverrun.com/ja/q/11488356
+    {{BASE_URL}}/search/designers?available_to_hire=1&has_designs=1&latitude=45.4231&longitude=-75.68313&unit=km&distance=160&orderBy=closest
     

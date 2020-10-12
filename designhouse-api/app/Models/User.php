@@ -123,6 +123,11 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
         return $chat;
     }
 
+    public function getDistAttribute(){
+
+        return null;
+    }
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *

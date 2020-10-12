@@ -7,4 +7,5 @@ interface IUser
 {
     public function findByEmail($email);
     public function search(Request $request);
+    public function distance(Request $request);
 }
