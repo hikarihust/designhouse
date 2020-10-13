@@ -809,4 +809,11 @@ Structure of the Nuxt Application
         API_BASE=http://designhouse.xyz/api
     Axios
         yarn add @nuxtjs/axios
+Install base packages and setup the folder structure
+    cdnjs 
+    https://cdnjs.com/
+        https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js
+        https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js
+        https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js
+    npm install --save-dev node-sass sass-loader
     
