@@ -816,4 +816,7 @@ Install base packages and setup the folder structure
         https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js
         https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js
     npm install --save-dev node-sass sass-loader
+Bringing in the HTML Template to NuxtJS
+    https://qiita.com/sam_sam/items/982244407c0f6d17d680
+    src="~assets/images/profile.png"
     
