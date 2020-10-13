@@ -796,3 +796,17 @@ Install Nodejs and create new NuxtJs Application
     npm run dev
     npm run build
     npm run start
+Structure of the Nuxt Application
+    http://designhouse.xyz/api
+    http://localhost:3000/
+    http://designhouse.xyz:3000
+    nuxtjs static and assets folder 
+    https://stackoverflow.com/questions/48808182/nuxt-assets-and-static-folder-when-to-use-which
+    https://github.com/nuxt-community/dotenv-module
+        yarn add --dev @nuxtjs/dotenv
+    .env
+        BASE_URL=http://designhouse.xyz:3000
+        API_BASE=http://designhouse.xyz/api
+    Axios
+        yarn add @nuxtjs/axios
+    
