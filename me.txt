@@ -823,4 +823,27 @@ Custom routing in NuxtJS
     npm i @nuxtjs/router
     router.js
         const page = path => () => import(`~/pages/${path}`).then(m => m.default || m);
+Configure Authentication Module in NuxtJS
+    https://auth.nuxtjs.org/guide/setup.html
+    yarn add @nuxtjs/auth
+    Enable vuex store by creating `store/index.js`
+    https://auth.nuxtjs.org/schemes/local.html#usage
+    https://viblo.asia/p/auth-in-nuxtjs-gAm5yGAqZdb
+    endpoints: {
+        login: { url: '/login', method: 'post', propertyName: 'token' },
+        logout: { url: '/logout', method: 'post' },
+        user: { url: '/me', method: 'get', propertyName: 'data' }
+    },
+    BASE_URL: http://designhouse.xyz/api(laravel)
+    API_URL: http://designhouse.xyz/api(nuxtjs .env)
+    {{BASE_URL}}/login
+        url: '/login'
+        response: token -> propertyName: 'token'
+    {{BASE_URL}}/me
+        url: '/me'
+        response: data -> propertyName: 'data'
+    state->auth
+        loggedIn:false
+        strategy:"local"
+        user:null
     
