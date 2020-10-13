@@ -846,4 +846,13 @@ Configure Authentication Module in NuxtJS
         loggedIn:false
         strategy:"local"
         user:null
+Install and configure VForm for API Requests
+    A simple way to handle Laravel back-end validation in Vue. Inspired from Laravel Spark.
+        https://www.npmjs.com/package/vform
+        https://github.com/cretueusebiu/vform
+    npm i axios vform
+    I want to use @nuxtjs/axios with my own handlers. Is there a way to use this axios instance instead of default one?
+        Overriding the Submit method in the Form class
+        nuxtjs Custom axios vform plugin
+        https://github.com/cretueusebiu/vform/issues/30
     
