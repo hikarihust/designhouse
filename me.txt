@@ -819,4 +819,8 @@ Install base packages and setup the folder structure
 Bringing in the HTML Template to NuxtJS
     https://qiita.com/sam_sam/items/982244407c0f6d17d680
     src="~assets/images/profile.png"
+Custom routing in NuxtJS
+    npm i @nuxtjs/router
+    router.js
+        const page = path => () => import(`~/pages/${path}`).then(m => m.default || m);
     
