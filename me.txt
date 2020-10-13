@@ -771,4 +771,28 @@ CORS and wrap on API
                                     Getting started with the Frontend
                 
 UI template
-    
+Install Nodejs and create new NuxtJs Application
+    nuxtjs.org 
+    https://nuxtjs.org/
+    node -v -> v12.14.0
+    npm -v -> 6.13.4
+    npx -v -> 6.13.4
+    yarn create nuxt-app designhouse-client
+        Project name: designhouse-client
+        Programming language: JavaScript 
+        Project description: DesignHouse client application 
+        Author name: vu dinh quang 
+        Choose the package manager: npm
+        UI framework: Boostrap vue
+        Nuxt.js modules: (Press <space> to select, <a> to toggle all, <i> to invert selection)
+            Axios
+        Linting tools: (Press <space> to select, <a> to toggle all, <i> to invert selection)
+            ESLint(Prettier)
+        Choose custom Server framework: None
+        Rendering mode: Universal (SSR / SSG) 
+        Server (Node.js hosting)
+        Development tools: (Press <space> to select, <a> to toggle all, <i> to invert selection)
+            jsconfig.json
+    npm run dev
+    npm run build
+    npm run start
