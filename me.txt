@@ -856,3 +856,13 @@ Install and configure VForm for API Requests
         nuxtjs Custom axios vform plugin
         https://github.com/cretueusebiu/vform/issues/30
     
+        ==================================================================================================
+
+                                    Implementing Authentication in the UI
+Registration 1    
+    https://github.com/cretueusebiu/vform/issues/30
+    https://www.npmjs.com/package/vform
+    Unprocessable Entity
+    Nuxt.jsのメソッド内で外部APIを叩くとcorsエラーが起きる
+        https://qiita.com/naokada/items/394c1d85ad2975ba62f0
+    

@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -31,7 +33,8 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    '~plugins/vform'
+    '~plugins/vform',
+    '~plugins/axios'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -39,7 +42,8 @@ export default {
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
-    '@nuxtjs/router'
+    '@nuxtjs/router',
+    '@nuxtjs/dotenv'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -48,7 +52,8 @@ export default {
     'bootstrap-vue/nuxt',
     '@nuxtjs/auth',
     '@nuxtjs/axios',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/proxy'
   ],
 
   auth: {
@@ -68,7 +73,18 @@ export default {
   },
 
   axios: {
-    baseURL: process.env.API_URL
+    // axios でproxy が使えるようにする
+    proxy: true
+  },
+
+  proxy: {
+    '/api/': {
+      // ターゲット先のURLを指定
+      target: 'http://designhouse.xyz',
+      pathRewrite: {
+        '^/api': '/'
+      }
+    }
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
