@@ -5,6 +5,9 @@
         Register
       </h1>
       <form class="auth-form" @submit.prevent="submit">
+        <alert-success :form="form">
+          We have sent you an email to activate your account.
+        </alert-success>
         <div class="form-group">
           <input
             type="text"
@@ -72,7 +75,7 @@
         </div>
         <p class="font-14 fw-400 text-center mt-4">
           Already have an account?
-          <a class="color-blue" href="#"> Login</a>
+          <nuxt-link :to="{ name: 'login' }" class="color-blue">Login</nuxt-link>
         </p>
       </form>
     </div>
@@ -98,7 +101,7 @@ export default {
       this.form
         .post(`/register`)
         .then(res => {
-          console.log(res);
+          this.form.reset();
         })
         .catch(error => {
           console.log(error);

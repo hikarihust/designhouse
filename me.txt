@@ -865,4 +865,14 @@ Registration 1
     Unprocessable Entity
     Nuxt.jsのメソッド内で外部APIを叩くとcorsエラーが起きる
         https://qiita.com/naokada/items/394c1d85ad2975ba62f0
+Registration 2
+    Regist infor
+        Jessica Parker
+        jparker
+        parker@email.com
+        password
+        password
+        <alert-success :form="form"></alert-success>
+        -> data/form: 
+            successful:false/true , nếu successful có giá trị true thì alert-success sẽ được hiển thị 
     
