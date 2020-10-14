@@ -73,6 +73,7 @@ export default {
   },
 
   axios: {
+    baseURL: process.env.API_URL,
     // axios でproxy が使えるようにする
     proxy: true
   },

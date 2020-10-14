@@ -875,4 +875,10 @@ Registration 2
         <alert-success :form="form"></alert-success>
         -> data/form: 
             successful:false/true , nếu successful có giá trị true thì alert-success sẽ được hiển thị 
+Login with Local Strategy
+    https://auth.nuxtjs.org/schemes/local.html#usage
+    https://www.npmjs.com/package/vform
+    Login
+        email: parker@email.com
+        password: password
     
