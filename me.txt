@@ -897,4 +897,11 @@ Activate User account and Logout
         https://stackoverflow.com/questions/16607557/perform-join-on-value-in-array-of-objects
 Send Password Recovery Email
 Reset User's Password
+
+        ==================================================================================================
+
+                                    Creating Global Dynamic Components and Route Middleware
+
+Setting up Dynamic Component Registration
+    https://vuejs.org/v2/guide/components-registration.html#Automatic-Global-Registration-of-Base-Components
     

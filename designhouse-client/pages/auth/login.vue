@@ -42,7 +42,12 @@
           </nuxt-link>
         </div>
         <div class="text-right">
-          <button
+
+          <base-button :loading="form.busy">
+            Login
+          </base-button>
+
+          <!-- <button
             type="submit"
             :disabled="form.busy"
             class="btn btn-primary primary-bg-color font-16 fw-500 text-uppercase"
@@ -51,7 +56,7 @@
               <i class="fas fa-spinner fa-spin"></i>
             </span>
             Login
-          </button>
+          </button> -->
         </div>
         <p class="font-14 fw-400 text-center mt-4">
           Don't have an account yet?
