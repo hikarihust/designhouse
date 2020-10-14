@@ -882,4 +882,17 @@ Login with Local Strategy
         email: parker@email.com
         password: password
 Resend Account Verification Email
+Activate User account and Logout
+    api: 
+        designhouse\designhouse-api\app\Providers\RouteServiceProvider
+            protected function configureRateLimiting()
+            {
+                RateLimiter::for('api', function (Request $request) {
+                    return Limit::perMinute(60);
+                });
+            }
+        -> in 60 minutes
+    http://designhouse.xyz:3000/verification/verify/4?expires=1602661540&signature=28c13a60bd7c68e2ae8826ca2200acfa80bd3478999498cc783ecbb292b02940
+    Perform .join on value in array of objects
+        https://stackoverflow.com/questions/16607557/perform-join-on-value-in-array-of-objects
     

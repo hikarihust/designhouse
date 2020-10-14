@@ -69,7 +69,12 @@ export default {
         // globalToken: true,
         // autoFetchUser: true
       }
-    }
+    },
+    redirect: {
+      login: '/login',
+      logout: '/',
+      home: '/'
+    },
   },
 
   axios: {
