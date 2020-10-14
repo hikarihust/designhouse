@@ -904,4 +904,6 @@ Reset User's Password
 
 Setting up Dynamic Component Registration
     https://vuejs.org/v2/guide/components-registration.html#Automatic-Global-Registration-of-Base-Components
+Base Button Component
+    <slot />
     
