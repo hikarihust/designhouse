@@ -895,4 +895,5 @@ Activate User account and Logout
     http://designhouse.xyz:3000/verification/verify/4?expires=1602661540&signature=28c13a60bd7c68e2ae8826ca2200acfa80bd3478999498cc783ecbb292b02940
     Perform .join on value in array of objects
         https://stackoverflow.com/questions/16607557/perform-join-on-value-in-array-of-objects
+Send Password Recovery Email
     
