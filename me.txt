@@ -881,4 +881,5 @@ Login with Local Strategy
     Login
         email: parker@email.com
         password: password
+Resend Account Verification Email
     
