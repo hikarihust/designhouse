@@ -896,4 +896,5 @@ Activate User account and Logout
     Perform .join on value in array of objects
         https://stackoverflow.com/questions/16607557/perform-join-on-value-in-array-of-objects
 Send Password Recovery Email
+Reset User's Password
     

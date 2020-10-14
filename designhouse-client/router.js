@@ -27,6 +27,11 @@ export function createRouter() {
         name: 'password.email',
         component: page('auth/password/reset-email.vue')
       },
+      {
+        path: '/password/reset/:token',
+        name: 'password.reset',
+        component: page('auth/password/password-reset.vue')
+      },
     ]
   })
 }
