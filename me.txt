@@ -910,4 +910,12 @@ Base Input Component
     https://qiita.com/romukey/items/ebd447f769cd9ad1352c
 Creating Route Middleware
     https://auth.nuxtjs.org/guide/middleware.html
+
+        ==================================================================================================
+
+                                    Uploading Designs from the User Interface
+    
+Setting up the Upload pages and components
+    Slim image cropper
+        https://pqina.nl/slim/
     
