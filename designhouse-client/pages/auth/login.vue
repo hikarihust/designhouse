@@ -12,26 +12,21 @@
           >
         </alert-error>
         <div class="form-group">
-          <input
-            type="text"
-            name="email"
-            v-model.trim="form.email"
-            class="form-control form-control-lg font-14 fw-300"
-            :class="{ 'is-invalid': form.errors.has('email') }"
+          <base-input
+            :form="form"
+            field="email"
+            v-model="form.email"
             placeholder="Email"
-            />
-          <has-error :form="form" field="email"></has-error>
+          ></base-input>
         </div>
         <div class="form-group">
-          <input
-            type="password"
-            name="password"
-            v-model.trim="form.password"
-            class="form-control form-control-lg font-14 fw-300"
-            :class="{ 'is-invalid': form.errors.has('password') }"
+          <base-input
+            :form="form"
+            field="password"
+            inputType="password"
+            v-model="form.password"
             placeholder="Password"
-            />
-          <has-error :form="form" field="password"></has-error>
+          ></base-input>
         </div>
         <div class="mt-4 mb-4 clearfix">
           <nuxt-link

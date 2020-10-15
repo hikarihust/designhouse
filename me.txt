@@ -906,4 +906,6 @@ Setting up Dynamic Component Registration
     https://vuejs.org/v2/guide/components-registration.html#Automatic-Global-Registration-of-Base-Components
 Base Button Component
     <slot />
+Base Input Component
+    https://qiita.com/romukey/items/ebd447f769cd9ad1352c
     
