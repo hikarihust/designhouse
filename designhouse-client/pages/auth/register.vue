@@ -61,6 +61,7 @@
 
 <script>
 export default {
+  middleware: ['guest'],
   data() {
     return {
       form: this.$vform({

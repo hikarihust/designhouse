@@ -908,4 +908,6 @@ Base Button Component
     <slot />
 Base Input Component
     https://qiita.com/romukey/items/ebd447f769cd9ad1352c
+Creating Route Middleware
+    https://auth.nuxtjs.org/guide/middleware.html
     
