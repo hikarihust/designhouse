@@ -7,6 +7,7 @@
         </h1>
       </div>
     </section>
+
     <div class="upload-shot">
       <div class="container">
         <div class="row justify-content-center align-items-center text-center">
@@ -49,14 +50,45 @@ export default {
   data() {
     return {
       slimOptions: {
+        service: this.slimService,
+        post: 'output',
+        defaultInputName: 'image',
+        minSize: '800,600',
+        label: 'Select Image...',
+        maxFileSize: 2 // value is 2MB
       },
       uploading: false,
       error: ''
     };
   },
-}
+
+  methods: {
+    slimService(formdata, progress, success, failure, slim) {
+      this.uploading = true;
+      /*
+      this.$axios
+        .post('/designs', formdata)
+        .then(res => {
+          this.$router.push({
+            name: 'designs.edit',
+            params: { id: res.data.id }
+          });
+        })
+        .catch(err => {
+          const message = err.response.data.errors;
+          this.error = message[Object.keys(message)[0]][0];
+          failure(500);
+        })
+        .finally(() => (this.uploading = false));
+        */
+
+        this.$router.push({
+          name: 'designs.edit',
+          params: { id: 1 }
+        });
+    }
+  }
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
