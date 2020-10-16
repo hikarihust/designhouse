@@ -921,4 +921,5 @@ Setting up the Upload pages and components
 Completing the Fancy Image Upload from Client Side
     https://pqina.nl/slim/#vue
     https://viblo.asia/p/upload-file-voi-vuejs-va-laravel-bJzKm0Dr59N
+Updating Design Information after upload
     
