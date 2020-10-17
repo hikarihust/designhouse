@@ -37,6 +37,7 @@ class UploadController extends Controller
 
         // create the database record for the design
         $design = $this->designs->create([
+            'user_id' => auth()->id(),
             'image' => $filename,
             'disk' => config('site.upload_disk')
         ]);

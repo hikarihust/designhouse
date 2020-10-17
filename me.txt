@@ -923,4 +923,18 @@ Completing the Fancy Image Upload from Client Side
     https://viblo.asia/p/upload-file-voi-vuejs-va-laravel-bJzKm0Dr59N
 Updating Design Information after upload
 Custom Error Page
-        
+Implement the update form and Tagging Package
+    http://designhouse.xyz/storage/app/public/uploads/designs/large/1602047949_image1.png
+    filesystems.php
+        'links' => [
+            public_path('storage') => storage_path('app/public'),
+        ],
+    php artisan storage:link
+    npm list -g --depth=0
+    https://www.npmjs.com/package/@johmun/vue-tags-input
+    https://github.com/JohMun/vue-tags-input/issues/24
+        npm install @johmun/vue-tags-input
+        nuxt.config.js
+            ssr: false,
+        delimiter
+    
