@@ -148,6 +148,8 @@ export default {
     } catch (err) {
       if (err.response.status === 404) {
         error({ statusCode: 404, message: 'Design not found' });
+      } else if (err.response.status === 401) {
+        redirect('/login');
       } else {
         error({ statusCode: 500, message: 'Internal server error' });
       }

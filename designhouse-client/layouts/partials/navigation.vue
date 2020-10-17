@@ -103,23 +103,23 @@
                   >Your Account</span
                   >
               </div>
-              <a
-                class="dropdown-item mt-28"
-                href="#"
-                title="Profile"
-                >
-              <i class="fa fa-user"></i>
-              Profile
-              </a>
-              <a class="dropdown-item" href="#" title="Setting">
-              <i class="fa fa-cogs"></i>
-              Setting
-              </a>
+              <nuxt-link to="/settings/dashboard" class="dropdown-item mt-28">
+                <i class="fas fa-tachometer-alt"></i>
+                Dashboard
+              </nuxt-link>
+              <nuxt-link to="/settings/profile" class="dropdown-item">
+                <i class="fas fa-tachometer-alt"></i>
+                Profile
+              </nuxt-link>
+              <nuxt-link to="/settings" class="dropdown-item">
+                <i class="fas fa-tachometer-alt"></i>
+                Setting
+              </nuxt-link>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#" @click.prevent="logout">
+              <span class="dropdown-item" @click.prevent="logout">
               <i class="fa fa-lock"></i>
               Sign Out
-              </a>
+              </span>
             </div>
           </li>
           <!-- End Profile Dropdown -->

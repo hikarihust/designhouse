@@ -942,4 +942,6 @@ Submitting the Update Form
     Description: Simple mockups for PowerBI Dashboard for EO
     Tag: PowerBI Microsoft Bussiness intelligence 
 Preventing Unauthorized Access to the Design Edit Page
+Configure Nested Routes in Nuxt
+    err.response.status === 401 check trường hợp khi chưa login 
     
