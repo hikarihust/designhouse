@@ -946,4 +946,20 @@ Configure Nested Routes in Nuxt
     err.response.status === 401 check trường hợp khi chưa login 
 Redirecting designers after Update process
 User Dashboard -  Design Listing
+User Dashboard - Profile Update
+    longitude: this.$auth.user.location.coordinates[0],
+    latitude: this.$auth.user.location.coordinates[1]
+    {{BASE_URL}}/me (this.$auth.user)
+        "location": {
+            "type": "Point",
+            "coordinates": [
+                -75.784346407,
+                45.445677
+            ]
+        },
+    {{BASE_URL}}/settings/profile
+        "location": {
+            "latitude": 45.458507,
+            "longitude": -73.753252
+        },
     
