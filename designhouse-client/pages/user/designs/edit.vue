@@ -134,7 +134,7 @@ export default {
       validation: [{
         classes: 'max-length',
         // max-length is added as css-class to a tag, if the tag has lenth more than 20
-        rule: tag => tag.text.length > 20,
+        rule: tag => tag.text.length > 50,
       }],
     };
   },
@@ -156,7 +156,12 @@ export default {
 
   methods: {
     submit() {
-
+      this.form
+        .put(`/designs/${this.$route.params.id}`)
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => console.log(err.response));
     }
   },
 
@@ -167,7 +172,6 @@ export default {
           this.form[key] = this.design[key];
         }
       });
-      // this.form.tags = this.design.tag_list.tags || [];
       this.form.tags = createTags(this.design.tag_list.tags, this.validation);
 
       if (this.design.team) {

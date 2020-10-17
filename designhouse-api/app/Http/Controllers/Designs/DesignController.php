@@ -45,6 +45,16 @@ class DesignController extends Controller
 
     public function update(Request $request, $id)
     {
+        $tags = array();
+        foreach ($request->tags as $key => $value) {
+            if($value["text"]) {
+                $tags[]=$value["text"];
+            }
+        }
+        if($tags) {
+            $request->tags = $tags;
+        }
+
         $design = $this->designs->find($id);
 
         $this->authorize('update', $design);

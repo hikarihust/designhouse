@@ -937,4 +937,8 @@ Implement the update form and Tagging Package
         nuxt.config.js
             ssr: false,
         delimiter
+Submitting the Update Form
+    Tittle: PowerBI Mokups 
+    Description: Simple mockups for PowerBI Dashboard for EO
+    Tag: PowerBI Microsoft Bussiness intelligence 
     
