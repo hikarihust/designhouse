@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth:api']], function(){
     // Upload Designs
     Route::post('designs', 'Designs\UploadController@upload');
     Route::put('designs/{id}', 'Designs\DesignController@update');
+    Route::get('designs/{id}/byUser', 'Designs\DesignController@userOwnsDesign');
     Route::delete('designs/{id}', 'Designs\DesignController@destroy');
 
     // Likes and Unlikes
