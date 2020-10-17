@@ -944,4 +944,5 @@ Submitting the Update Form
 Preventing Unauthorized Access to the Design Edit Page
 Configure Nested Routes in Nuxt
     err.response.status === 401 check trường hợp khi chưa login 
+Redirecting designers after Update process
     

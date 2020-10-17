@@ -161,7 +161,9 @@ export default {
       this.form
         .put(`/designs/${this.$route.params.id}`)
         .then(res => {
-          console.log(res);
+          setTimeout(() => {
+            this.$router.push({ name: 'settings.dashboard' });
+          }, 1000);
         })
         .catch(err => console.log(err.response));
     }
