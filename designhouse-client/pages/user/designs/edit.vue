@@ -117,12 +117,9 @@
 </template>
 
 <script>
-import { VueTagsInput, createTags  } from '@johmun/vue-tags-input';
+import { createTags  } from '@johmun/vue-tags-input';
 export default {
   middleware: ['auth'],
-  components: {
-    VueTagsInput
-  },
   data() {
     return {
       tag: '',

@@ -15,7 +15,7 @@
               <base-input :form="form" field="tagline" v-model="form.tagline" placeholder="Tagline"></base-input>
             </div>
             <div class="form-group">
-              Location
+              <!-- <base-gmap></base-gmap> -->
             </div>
             <div class="form-group">
               <base-textarea

@@ -37,6 +37,8 @@ export default {
     '~plugins/vform',
     '~plugins/axios',
     '~components/_global',
+    { src: '~/plugins/gmaps', ssr: false },
+    { src: '~/plugins/tags', ssr: false }
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

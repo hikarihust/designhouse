@@ -962,4 +962,21 @@ User Dashboard - Profile Update
             "latitude": 45.458507,
             "longitude": -73.753252
         },
+Google Maps Location API - Autocomplete
+    vue2-google-maps-withscopedautocomp 
+        https://www.npmjs.com/package/vue2-google-maps-withscopedautocomp
+        https://github.com/TrendyTim/vue-google-maps#readme
+        npm install vue2-google-maps
+    Google maps get an api key 
+        https://developers.google.com/maps/documentation/javascript/get-api-key
+        Enable: Places API
+        Key: AIzaSyBLCU15FA2chK3PhwZ71OViFIhVwnbPwVs
+        Edit
+            Name: DevApi
+            HTTP referrers (web sites)
+            Website restrictions
+                http://designhouse.xyz:3000/ 
+            API restrictions
+                Restrict key
+                Places API
     
