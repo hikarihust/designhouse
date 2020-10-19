@@ -58,64 +58,32 @@
             <div class="col-md-4">
               <div class="post-detail-sidebar">
                 <!-- Designer info -->
-                <div
-                  class="modal-user-meta white-bg-color"
-                  >
-                  <a
-                    class="float-left"
-                    href="#"
-                    title="Neba"
-                    >
-                  <img
-                    src="~assets/images/profile.png"
-                    alt="Neba"
-                    />
+                <div class="modal-user-meta white-bg-color">
+                  <a class="float-left" href="#" title="Neba">
+                    <img :src="design.user.photo_url" alt="Neba" />
                   </a>
                   <div class="modal-user-detail">
                     <h1 class="font-13 fw-500">
                       <a href="#">
-                      John Doe
+                        {{ design.user.name }}
                       </a>
                     </h1>
                     <p class="font-12 fw-300 mt-1">
-                      <span class="shot-by">Sr. UI Designer</span>
+                      <span class="shot-by">{{ design.user.tagline }}</span>
                     </p>
                     <p class="font-12 fw-300  mt-1">
-                      13 days ago
+                      {{ design.created_at_dates.created_at_human }}
                     </p>
                   </div>
                 </div>
                 <!-- End Designer info -->
                 <!-- Designer Design Info -->
-                <ul
-                  class="details-side-meta font-14 fw-400"
-                  >
+                <ul class="details-side-meta font-14 fw-400">
+                  <DesignLike :design="design"></DesignLike>
+
                   <li class="d-table w-100">
-                    <div
-                      class="stats-txt d-table-cell w-50"
-                      >
-                      <a href="#">
-                      <span>
-                      <i
-                        class="fa fa-heart"
-                        ></i>
-                      </span>
-                      Like
-                      </a>
-                    </div>
-                    <div
-                      class="stats-num d-table-cell w-50 text-right"
-                      >
-                      <a href="#">100 Likes</a>
-                    </div>
-                  </li>
-                  <li class="d-table w-100">
-                    <div
-                      class="stats-txt d-table-cell w-100"
-                      >
-                      <a href="#">
-                      More from John Doe
-                      </a>
+                    <div class="stats-txt d-table-cell w-100">
+                      <a href="#"> More from {{ design.user.name }} </a>
                     </div>
                   </li>
                 </ul>
@@ -210,9 +178,11 @@
 
 <script>
 import DesignComment from '@/components/DesignComment';
+import DesignLike from '@/components/DesignLike';
 export default {
   components: {
-    DesignComment
+    DesignComment,
+    DesignLike
   },
   data() {
     return {
