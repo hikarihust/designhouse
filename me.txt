@@ -994,4 +994,46 @@ Adding comments to designs
 Comment Form
 Liking and Unliking designs
 Display Tags on details page and wrap on UI
+
+        ==================================================================================================
+
+                                    Deploying the Application to Remote Server
+            
+Create a Digital Ocean Server and an SSH Key
+    https://www.digitalocean.com/?refcode=5b428a74fc09&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=CopyPaste
+        Sign Up with Email
+        Full Name: vu dinh quang
+        vudinhquangk53@gmail.com
+        Go to Panel 
+        New Project
+            Name your project: Udemy
+            Add a description: Designhouse project
+            Class project/Education 
+    Get started with a Dropplet 
+        Distributions:
+            Ubuntu(18.04)
+        Choose a plan
+            5$/month 
+        Choose a datacenter region
+            Singapore 
+        Authentication 
+            SSH keys
+        Local Computer
+            mkdir .ssh
+            cd .ssh
+            ssh-keygen
+            Enter file in which to save the key (/c/Users/vudinhquang/.ssh/id_rsa): designhouse
+            Enter passphrase (empty for no passphrase):
+            Enter same passphrase again:
+        ->
+            designhouse
+            designhouse.pub
+        cat designhouse.pub -> Copy to create new SSH key on digitalocean
+            SSH key content: Copy from cat designhouse.pub
+            Name: Designhouse
+        Choose your SSH keys 
+            Designhouse
+        Choose a hostname
+            designhouse
+        -> Click Create Dropplet Button 
     
