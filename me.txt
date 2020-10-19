@@ -986,4 +986,6 @@ Complete User profile Update
                                     Listing and Searching Designs
 
 Searching Designs
-    
+Displaying the search results
+    nuxt js /api/me:1 Failed to load resource: the server responded with a status of 401 (Unauthorized)
+    https://github.com/nuxt-community/auth-module/issues/139

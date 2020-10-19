@@ -41,7 +41,8 @@ class DesignResource extends JsonResource
             ] : null,
             'comments' => CommentResource::collection(
                 $this->whenLoaded('comments')),
-            'user' => new UserResource($this->whenLoaded('user'))
+            // 'user' => new UserResource($this->whenLoaded('users'))
+            'user' => new UserResource($this->user)
         ];
     }
 }

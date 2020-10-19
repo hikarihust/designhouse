@@ -79,6 +79,7 @@ export default {
       logout: '/',
       home: '/'
     },
+    resetOnError: true
   },
 
   axios: {

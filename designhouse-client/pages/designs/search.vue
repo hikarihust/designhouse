@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- Start Filters -->
     <section class="filters-block shadow-sm">
       <div class="container">
         <form @submit.prevent="search">
@@ -65,6 +66,14 @@
             </div>
           </div>
         </form>
+      </div>
+    </section>
+    <!-- End Filters -->
+    <section class="cards-block">
+      <div class="container">
+        <div class="row">
+          <base-design v-for="design in designs" :key="design.id" :design="design"></base-design>
+        </div>
       </div>
     </section>
   </div>
