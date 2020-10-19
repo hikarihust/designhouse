@@ -26,24 +26,12 @@
                   <strong class="fw-500">{{ comments.length }} comments</strong>
                 </h1>
                 <ul class="comment-list">
-                  <li v-for="comment in comments" :key="comment.id" class="clearfix">
-                    <div class="comment-thumb float-left">
-                      <a href="#">
-                      <img :src="comment.user.photo_url" />
-                      </a>
-                    </div>
-                    <div class="comment-meta">
-                      <h3 class="font-16 fw-500 mb-2">
-                        <a href="#" title="Neba">{{ comment.user.name }}</a>
-                      </h3>
-                      <p class="font-14 fw-300 mb-2">
-                        {{ comment.body }}
-                      </p>
-                      <span class="font-14 fw-300">
-                      <a href="#">{{ comment.created_at_dates.created_at_human }}</a>
-                      </span>
-                    </div>
-                  </li>
+                  <DesignComment
+                    v-for="comment in comments"
+                    :key="comment.id"
+                    :comment="comment"
+                    @deleted="handleDelete"
+                  ></DesignComment>
                 </ul>
               </div>
               <!--/ END COMMENTS-->
@@ -203,7 +191,11 @@
 </template>
 
 <script>
+import DesignComment from '@/components/DesignComment';
 export default {
+  components: {
+    DesignComment
+  },
   data() {
     return {
 
@@ -224,6 +216,12 @@ export default {
       }
     }
   },
+
+  methods: {
+    handleDelete(id) {
+      this.comments = this.comments.filter(c => c.id !== id);
+    }
+  }
 }
 </script>
 
