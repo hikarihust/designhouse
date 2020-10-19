@@ -993,4 +993,5 @@ Displaying Design Details Page
 Adding comments to designs
 Comment Form
 Liking and Unliking designs
+Display Tags on details page and wrap on UI
     
