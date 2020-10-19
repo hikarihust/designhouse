@@ -65,6 +65,12 @@ export function createRouter() {
           }
         ]
       },
+
+      {
+        path: '/designs',
+        name: 'designs.search',
+        component: page('designs/search.vue')
+      },
     ]
   })
 }
