@@ -1058,4 +1058,42 @@ SSH into our new Server
     Ubuntu 18.04 (LTS) x64
     designhouse: 104.248.158.210
     ssh -i designhouse root@104.248.158.210
-        
+Buy a domain name and configure DNS Records
+    https://www.namecheap.com/
+    designhouse.social
+    WhoisGuard *: Off
+    Confirm and then Create An Account
+        Username: vudinhquang
+        password: ***
+        First Name: vu
+        Last Name: quang 
+    OK -> Domain List 
+    An A-Record maps a Domain name to an IP Address
+        dig google.com
+        google.com.             238     IN      A       172.217.8.206
+    A CNAME record maps a canonical name to another canonical name. Eg. mapping a subdomain to 
+        the main domain or to another subdomain
+        dig mail.google.com
+        mail.google.com.        300     IN      CNAME   googlemail.l.google.com.
+        googlemail.l.google.com. 24     IN      A       216.58.192.229
+    Add DNS Records to Digital Ocean
+        https://cloud.digitalocean.com/networking/domains?i=bc0994
+        domain: designhouse.social
+        -> https://cloud.digitalocean.com/networking/domains/designhouse.social?i=bc0994
+        HOSTNAME: @
+        WILL DIRECT TO: click designhouse(104.248.158.210)
+        -> Create record 
+    Add more one DNS Records to Digital Ocean
+        HOSTNAME: www
+        WILL DIRECT TO: click designhouse(104.248.158.210)
+        -> Create record 
+    Add NameServers
+        The nameserver is like a Phonebook. We need to copy the nameservers from Digital Ocean
+            to Namecheap (or the domain provider you chose)
+        -> Copy ns1.digitalocean.com, ns2.digitalocean.com, ns3.digitalocean.com
+        https://ap.www.namecheap.com/domains/domaincontrolpanel/designhouse.social
+            NAMESERVERS -> Custom DNS 
+            ns1.digitalocean.com 
+            ns2.digitalocean.com 
+            ns3.digitalocean.com
+    
