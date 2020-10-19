@@ -34,6 +34,24 @@
                   ></DesignComment>
                 </ul>
               </div>
+
+              <template v-if="$auth.loggedIn">
+                <form @submit.prevent="save">
+                  <base-textarea
+                    :rows="2"
+                    :form="form"
+                    field="body"
+                    v-model.trim="form.body"
+                    placeholder="Enter a comment"
+                  ></base-textarea>
+
+                  <div class="mt-2 text-right">
+                    <base-button :loading="form.busy" size="sm">
+                      Post comment
+                    </base-button>
+                  </div>
+                </form>
+              </template>
               <!--/ END COMMENTS-->
             </div>
             <!-- RIGHT -->
@@ -198,7 +216,9 @@ export default {
   },
   data() {
     return {
-
+      form: this.$vform({
+        body: ''
+      })
     };
   },
 
@@ -220,6 +240,16 @@ export default {
   methods: {
     handleDelete(id) {
       this.comments = this.comments.filter(c => c.id !== id);
+    },
+
+    save() {
+      this.form
+        .post(`/designs/${this.design.id}/comments`)
+        .then(res => {
+          this.form.reset();
+          this.comments = [...this.comments, res.data.data];
+        })
+        .catch(e => console.log(e));
     }
   }
 }
