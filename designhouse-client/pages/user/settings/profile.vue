@@ -15,7 +15,10 @@
               <base-input :form="form" field="tagline" v-model="form.tagline" placeholder="Tagline"></base-input>
             </div>
             <div class="form-group">
-              <!-- <base-gmap></base-gmap> -->
+              <base-gmap
+                :initialValue="form.formatted_address"
+                @address-response="handleAddress"
+              ></base-gmap>
             </div>
             <div class="form-group">
               <base-textarea
@@ -70,6 +73,13 @@ export default {
         .put(`/settings/profile`)
         .then(res => console.log(res))
         .catch(e => console.log(e));
+    },
+    handleAddress(data) {
+      this.form.formatted_address = data.formatted_address;
+      this.form.location = {
+        latitude: data.latitude,
+        longitude: data.longitude
+      };
     }
   },
 

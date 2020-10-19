@@ -1,7 +1,6 @@
 require('dotenv').config();
 
 export default {
-  ssr: false,
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'designhouse-client',

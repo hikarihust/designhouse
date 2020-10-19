@@ -42,7 +42,7 @@ export default {
 
   methods: {
     handleChange(place) {
-      //console.log(place);
+      // console.log(place);
       if (!place || place == undefined || !place.geometry) {
         this.$emit('no-results-found', place);
         return false;

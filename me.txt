@@ -970,12 +970,12 @@ Google Maps Location API - Autocomplete
     Google maps get an api key 
         https://developers.google.com/maps/documentation/javascript/get-api-key
         Enable: Places API
-        Key: AIzaSyBLCU15FA2chK3PhwZ71OViFIhVwnbPwVs
+        Key: *******************************
         Edit
             Name: DevApi
             HTTP referrers (web sites)
             Website restrictions
-                http://designhouse.xyz:3000/ 
+                http://designhouse.xyz:3000/*
             API restrictions
                 Restrict key
                 Places API
@@ -1036,4 +1036,21 @@ Create a Digital Ocean Server and an SSH Key
         Choose a hostname
             designhouse
         -> Click Create Dropplet Button 
+Google Maps Location API - Autocomplete and Complete User profile Update 2
+    vue2-google-maps-withscopedautocomp 
+        https://www.npmjs.com/package/vue2-google-maps-withscopedautocomp
+        https://github.com/TrendyTim/vue-google-maps#readme
+        https://github.com/Jeson-gk/vue2-google-maps/blob/master/API.md
+        npm install vue2-google-maps
+    Google maps get an api key 
+        https://developers.google.com/maps/documentation/javascript/get-api-key
+        Enable: Places API
+        Key: -> https://console.cloud.google.com/apis/credentials?project=designhouse-292819
+        Edit
+            Name: DevApi
+            HTTP referrers (web sites)
+            Website restrictions
+                http://designhouse.xyz:3000/*
+            API restrictions
+                Restrict key: Geocoding API, Maps JavaScript API, Places API 
     
