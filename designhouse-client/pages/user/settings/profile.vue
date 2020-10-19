@@ -66,6 +66,10 @@ export default {
   },
   methods: {
     update() {
+      this.form
+        .put(`/settings/profile`)
+        .then(res => console.log(res))
+        .catch(e => console.log(e));
     }
   },
 
