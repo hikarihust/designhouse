@@ -1053,4 +1053,9 @@ Google Maps Location API - Autocomplete and Complete User profile Update 2
                 http://designhouse.xyz:3000/*
             API restrictions
                 Restrict key: Geocoding API, Maps JavaScript API, Places API 
-    
+SSH into our new Server
+    https://cloud.digitalocean.com/projects/7ab5cada-bdb7-4ebc-b804-fb031abfa6fb/resources?i=bc0994
+    Ubuntu 18.04 (LTS) x64
+    designhouse: 104.248.158.210
+    ssh -i designhouse root@104.248.158.210
+        
