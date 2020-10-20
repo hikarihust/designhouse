@@ -1485,4 +1485,34 @@ Configure Nginx to serve Laravel Application
         http://designhouse.social/
         http://104.248.158.210/
         http://designhouse.social/api/designs 
+Setup NPM, Pull the client application from GitHub
+    ssh -i designhouse gabs@104.248.158.210
+    Install Nodejs using PPA (Personal Package Archive)s and npm
+        cd ~
+        curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
+        ls 
+            api  composer-setup.php  nodesource_setup.sh
+    Add the PPA to your configuration and update the local cache
+        sudo bash nodesource_setup.sh
+    Now install nodejs and npm
+        sudo apt install nodejs
+        node -v
+        npm -v
+    Clone the Nuxt App from GitHub
+        git clone git@github.com:vudinhquang/designhouse.git client
+        cd client/designhouse-client
+        npm install
+    make .env file
+        vi .env
+    Content. We will change the url later with a domain name
+        BASE_URL=http://designhouse.social
+        API_URL=http://designhouse.social/api
+    Build the app in production
+        pwd
+            /home/gabs/client/designhouse-client
+        npm run build
+    Try to run the app. You will see it is running on Port 3000. But we cannot access this
+        npm run start
+    Access by Browser, we cannot access this
+        http://designhouse.social/:3000
     
