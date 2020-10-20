@@ -1515,4 +1515,102 @@ Setup NPM, Pull the client application from GitHub
         npm run start
     Access by Browser, we cannot access this
         http://designhouse.social/:3000
+Launch Nuxt App with PM2 Process Manager(Use ProxyPass)
+    We need to make some changes to our Nginx config to be able to access the app. We will
+        set up a reverse proxy to forward all requests coming to port 80 (which the the port through
+        which our website is accessible) to port 3000 (which is the port for our Nuxt App
+    location / -> location /api
+    sudo vim /etc/nginx/sites-available/designhouse.social
+        # forward api requests to PHP
+        location /api{
+            try_files $uri $uri/ /index.php?$query_string;
+        }
+
+        # Serve static files directly
+        location ~* ^/storage/(.*)\.(jpg|jpeg|gif|bmp|png|ico)$ {
+            access_log off;
+        }
+
+        # replace the / directive with the following
+        location / {
+            proxy_pass http://127.0.0.1:3000/;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+    sudo nginx -t
+    sudo systemctl reload nginx
+    So our API is now only accessible through /api, while other routes will be redirected to the
+        Nuxt config. At the moment, our Nuxt app is not working, but we can manually run it and see
+        what happens
+    Check port 3000 is running
+        lsof -i tcp:3000
+    address `localhost:3000` is already in use -> kill it
+        npx kill-port 3000
+    npm install
+    npm run build
+    npm run start
+    Then visit the site to check, it is 
+        http://designhouse.social
+        http://designhouse.social/api/designs
+    Install pm2
+        sudo npm i -g pm2
+    pm2 list
+        We do not have any application is running at the moment
+        ┌─────┬───────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+        │ id  │ name      │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+        └─────┴───────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+    pwd
+        /home/gabs/client/designhouse-client
+    pm2 start npm --name "designhouse" -- start
+    Kill pro is not necessary by pm2 stop and pm2 delete command
+    pm2 list
+        ┌─────┬────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+        │ id  │ name           │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+        ├─────┼────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+        │ 2   │ designhouse    │ default     │ N/A     │ fork    │ 31540    │ 3m     │ 0    │ online    │ 0%       │ 44.0mb   │ gabs     │ disabled │
+        └─────┴────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+        -> ↺(restart) value is 0
+    pm2 restart designhouse
+        -> ↺(restart) value is 1
+    Ensure that pm2 starts up automatically after the server restarts
+        pm2 startup
+            [PM2] Init System found: systemd
+            [PM2] To setup the Startup Script, copy/paste the following command:
+            sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u gabs --hp /home/gabs
+        Run ↑ command(copy the setup and paste)
+            sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u gabs --hp /home/gabs
+        pm2 save
+    pm2 list
+        ┌─────┬────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+        │ id  │ name           │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+        ├─────┼────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+        │ 2   │ designhouse    │ default     │ N/A     │ fork    │ 31622    │ 4m     │ 1    │ online    │ 0%       │ 43.1mb   │ gabs     │ disabled │
+        └─────┴────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+    Go to Digital Ocean and Turn Off the server
+        https://cloud.digitalocean.com/projects/7ab5cada-bdb7-4ebc-b804-fb031abfa6fb/resources?i=bc0994
+        -> Click to designhouse
+        -> Turn Off
+    try to access the web page again
+    Turn On and try to access the web page again -> It is running OK
+    http://designhouse.social/
+    http://designhouse.social/register
+    Full name: user test
+    username: user 
+    email: user@gmail.com
+    password: password
+    vim .env 
+        APP_URL=http://designhouse.social
+        CLIENT_URL=http://designhouse.social
+    http://designhouse.social/settings/profile
+    https://console.cloud.google.com/apis/credentials?project=designhouse-292819 to copy key and copy to 
+        /home/gabs/client/designhouse-client/plugins/gmaps.js
+    https://console.cloud.google.com/apis/credentials/key/ab7017e2-1b37-45a7-8411-742a90fe76a0?project=designhouse-292819
+        Website restrictions to add new domain
+        http://designhouse.social/*
+        https://designhouse.social/*
+        npx kill-port 3000
+        and build client again
+    http://designhouse.social/settings/profile to check Local api 
     
