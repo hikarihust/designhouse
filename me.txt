@@ -1226,4 +1226,70 @@ Install and configure MySQL
         mysql -u root -p # will now work
         Enter password: password 
     show databases;
+Setup PHP for Nginx
+    Install PHP and configure Nginx to use the PHP Processor
+    Unlike other webservers like Apache, Nginx does not natively contain a PHP processor. So
+        we need to install the fastCGI process manager (or php-fpm) and then tell Nginx to forward
+        all PHP requests to this process manager for processing.
+    Add the Ubuntu universe repository (contains several free software from the Ubuntu
+        community)
+        sudo add-apt-repository universe
+    Install php-fpm and php-mysql which allows PHP to talk to the database
+        sudo apt install php-fpm php-mysql
+    sudo ls -la /etc/nginx/sites-available/
+    sudo cat /etc/nginx/sites-available/default
+    Create a Server Block for NginX (similar to VirtualHost in Apache Server). This is to tell
+        NginX to use the PHP Processor for dynamic content. We will call our example.com but you
+        can call it anything. By using a different serverblock file and not the original (default), we
+        can easily restore the default configuration if necessary
+        sudo vim /etc/nginx/sites-available/designhouse.social (domain is designhouse.social)
+        paste the following
+            server {
+                # Port that nginx should listen on
+                listen 80;
+                # document root
+                root /var/www/html;
+                # your domain or ip address
+                server_name 104.248.158.210;
+                # priority file extensions
+                index index.php index.html index.htm index.nginx-debian.html;
+                # check the existence of files matching a provided url,
+                # and forward to 404 if not found
+                location / {
+                    try_files $uri $uri/ =404;
+                }
+                # handles php processing
+                location ~ \.php$ {
+                    include snippets/fastcgi-php.conf;
+                    fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+                }
+                # prevent any .htaccess files from being served to the user
+                location ~ /\.ht {
+                    deny all;
+                }
+            }
+    sudo ls -la /etc/nginx/sites-available/
+        default  
+        designhouse.social
+    sudo ls -la /etc/nginx/sites-enabled/
+        default -> /etc/nginx/sites-available/default
+    create a symlink to point the new file to the sites-enabled
+        sudo ln -s /etc/nginx/sites-available/designhouse.social /etc/nginx/sites-enabled/
+    then unlink the default configuration from the sites-enabled
+        sudo unlink /etc/nginx/sites-enabled/default
+    sudo ls -la /etc/nginx/sites-enabled/
+        designhouse.social -> /etc/nginx/sites-available/designhouse.social
+    check for syntax errors in the nginx config
+        sudo nginx -t
+    If ↑ ok, Reload Nginx to make the necessary changes
+        sudo systemctl reload nginx
+        sudo service nginx status
+    Create a info.php to test
+        sudo vim /var/www/html/info.php
+        <?php phpinfo();
+    sudo ls -la /var/www/html
+        index.nginx-debian.html
+        info.php
+    then visit http://104.248.158.210/info.php
+    then we can remove the info.php file
     
