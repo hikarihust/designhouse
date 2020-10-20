@@ -1307,6 +1307,7 @@ Setup Composer and create MySQL Database for Laravel
         composer
     Install other PHP modules required by Laravel
         sudo apt install php-mbstring php-xml php-bcmath php7.2-gd
+        -> sudo apt install php7.3-mbstring php7.3-xml php-bcmath php7.3-gd (laravel 8 required php 7.3 or newer)
     Create a MySQL Database(Database name is designhouse)
         mysql -u root -p
         Enter password: password
@@ -1347,4 +1348,84 @@ Setup Composer and create MySQL Database for Laravel
         | debian-sys-maint | mysql_native_password | localhost |
         | gabs             | mysql_native_password | localhost |
         +------------------+-----------------------+-----------+
+Pull the API code from GitHub and setup Laravel permissions
+    Go to home directory
+        cd ~
+    ls -a 
+        .ssh
+    Genetate SSH key and add to GitHub
+        ssh-keygen
+            Enter file in which to save the key (/home/gabs/.ssh/id_rsa):
+            Enter passphrase (empty for no passphrase):
+            Enter same passphrase again:
+        cat ~/.ssh/id_rsa.pub
+    copy the key over to Github
+        GitHub my profile -> setting -> SSH keys and GPG keys -> New SSH key
+            Tittle: DesignHouseServer
+            Key: ↑ Copy from cat ~/.ssh/id_rsa.pub
+    How to update/upgrade PHP 7.2 to latest PHP 7.3 safely? (Laravel 8 is required from PHP version 7.3 or newer)
+        https://askubuntu.com/questions/1146109/how-to-update-upgrade-php-7-2-to-latest-php-7-3-safely
+        https://askubuntu.com/questions/1146109/how-to-update-upgrade-php-7-2-to-latest-php-7-3-safely
+        sudo add-apt-repository ppa:ondrej/php
+        sudo apt update
+        sudo apt install php7.3 
+        sudo apt-get install php7.3-fpm php7.3-cli php7.3-mysql php7.3-gd php7.3-imagick php7.3-recode php7.3-tidy php7.3-xmlrpc
+    You can then restart Php & Nginx with the following:
+        sudo systemctl restart nginx.service
+        sudo systemctl restart php7.3-fpm
+    sudo apt install php7.3-mbstring php7.3-xml php-bcmath php7.3-gd
+    clone project from github
+        git clone git@github.com:vudinhquang/designhouse.git api
+        cd api/designhouse-api
+        composer install
+        cp .env.example .env
+        php artisan key:generate
+        php artisan jwt:secret
+        vim .env
+        update credentials
+            APP_NAME=Designhouse
+            APP_ENV=production
+            APP_URL=http://104.248.158.210
+            CLIENT_URL=http://104.248.158.210
+            DB_DATABASE=designhouse
+            DB_USERNAME=gabs
+            DB_PASSWORD=password
+            MAIL_USERNAME=f12e0f4ba28372
+            MAIL_PASSWORD=4f297b23303323
+            MAIL_ENCRYPTION=tls
+            MAIL_FROM_ADDRESS=vudinhquang222@gmail.com
+        php artisan migrate
+            Do you really wish to run this command? (yes/no) [no]:
+            > yes
+    Check which user is running nginx and PHP(www-data)
+        ps aux | grep nginx
+            www-data 21041  0.0  0.7 144116  7764 ?        S    07:28   0:00 nginx: worker process
+        ps aux | grep php
+            www-data 26259  0.0  1.2 408740 12976 ?        S    07:42   0:00 php-fpm: pool www
+    ll 
+        -> everything is owned by gabs
+    Give the web server user ownership and write access our folder(www-data user is running web application)
+        sudo chown -R www-data:www-data .
+    ll 
+        -> everything is owned by www-data user, www-data group 
+    Also add your user account to the www-data group
+        sudo usermod -aG www-data gabs
+    exit
+    ssh -i designhouse gabs@104.248.158.210 to login
+    groups
+       gabs sudo www-data 
+       -> gabs belong to www-data group
+    ll  
+        drwxrwxr-x  7 www-data www-data   4096 Oct 20 06:59 storage/
+    change permissions to storage folder
+        sudo chmod -R 775 storage/
+        drwxrwxr-x  7 www-data www-data   4096 Oct 20 06:59 storage/
+    ls storage/
+        app  debugbar  framework  logs  uploads
+    ls storage/app/public/uploads/
+        designs
+    Link storage folder to Home directory
+        php artisan storage:link
+    ls public/
+        storage
     
