@@ -1613,4 +1613,71 @@ Launch Nuxt App with PM2 Process Manager(Use ProxyPass)
         npx kill-port 3000
         and build client again
     http://designhouse.social/settings/profile to check Local api 
+Configure Free SSL Certificate
+    ssh -i designhouse gabs@104.248.158.210
+    We will add a Free SSL Certificate to our domain using CertBot. Certbot is a wrapper around
+        LetsEncrypt (A free Certificate Authority). Certbot was created by a project called Electronic
+        Frontier Foundation (EFF) (https://certbot.eff.org/)
+        Go to https://certbot.eff.org
+        Select the Web server (Nginx) and OS (Ubuntu 18).
+        We can just follow the instructions on the page to install SSL
+        SSH into the server
+        Install snapd
+            My HTTP website is running: nginx on Ubuntu 18.04 LTS
+                https://snapcraft.io/docs/installing-snap-on-ubuntu
+                sudo apt-get update
+                sudo apt install snapd
+            To test your system, install the hello-world snap and make sure it runs correctly:
+                sudo snap install hello-world
+                hello-world
+        Ensure that your version of snapd is up to date
+            sudo snap install core; sudo snap refresh core
+        Remove any Certbot OS packages
+            sudo apt-get remove certbot
+        Install Certbot
+            sudo snap install --classic certbot
+        Prepare the Certbot command
+            sudo ln -s /snap/bin/certbot /usr/bin/certbot
+        Choose how you'd like to run Certbot Either get and install your certificates...
+            sudo certbot --nginx
+    Access to website again
+        http://designhouse.social
+        -> Can not
+        See that it is access to https://designhouse.social/
+        (Redirect http -> https)
+    After installation, add HTTPS to ufw Firewall
+        sudo ufw status
+            OpenSSH                    ALLOW       Anywhere
+            Nginx HTTP                 ALLOW       Anywhere
+            OpenSSH (v6)               ALLOW       Anywhere (v6)
+            Nginx HTTP (v6)            ALLOW       Anywhere (v6)
+        sudo ufw allow 'Nginx Full'
+        sudo ufw status
+            OpenSSH                    ALLOW       Anywhere
+            Nginx HTTP                 ALLOW       Anywhere
+            Nginx Full                 ALLOW       Anywhere
+            OpenSSH (v6)               ALLOW       Anywhere (v6)
+            Nginx HTTP (v6)            ALLOW       Anywhere (v6)
+            Nginx Full (v6)            ALLOW       Anywhere (v6)
+        sudo ufw delete allow 'Nginx HTTP'
+        sudo ufw status
+            OpenSSH                    ALLOW       Anywhere
+            Nginx Full                 ALLOW       Anywhere
+            OpenSSH (v6)               ALLOW       Anywhere (v6)
+            Nginx Full (v6)            ALLOW       Anywhere (v6)
+        sudo systemctl reload nginx
+    Now visit your website
+        https://designhouse.social/
+        -> It is ok
+    api/designhouse-api/.env(http -> https)
+        APP_URL=https://designhouse.social
+        CLIENT_URL=https://designhouse.social
+    client/designhouse-client/.env(http -> https)
+        BASE_URL=https://designhouse.social
+        API_URL=https://designhouse.social/api
+    pm2 list 
+        name 
+        designhouse
+    npm run build
+    pm2 restart designhouse
     
