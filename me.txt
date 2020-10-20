@@ -1096,4 +1096,48 @@ Buy a domain name and configure DNS Records
             ns1.digitalocean.com 
             ns2.digitalocean.com 
             ns3.digitalocean.com
-    
+Disable Root SSH and create new Sudo User
+    ssh -i designhouse root@104.248.158.210
+    Update Software
+        apt update
+    Upgrade software (to make sure we have the latest of everything)
+        apt upgrade
+        What would you like to do about menu.lst?
+        -> install the package maintainer's Version 
+    add new user and enter a password
+        adduser gabs
+        pwd: init123!
+        Enter the new value, or press ENTER for the default
+            Full Name []: 
+            Room Number []:
+            Work Phone []:
+            Home Phone []:
+            Other []:
+        Is the information correct? [Y/n] Y
+    Add the user to the sudo group
+        usermod -aG sudo gabs
+    Switch to the new user
+        su gabs
+    Check user’s sudo access
+        sudo cat /var/log/auth.log
+    SETUP PERMISSIONS AND SSH FOR NEW USER
+        Go to the user’s home directory
+            cd ~
+        Create a new .ssh directory if not already exists
+            mkdir -p ~/.ssh
+            ls -a #-a allows you to see the hidden files and folders
+        Create an authorized_keys file and pasge the PUBLIC key
+            cd .ssh/
+            vi authorized_keys
+        Copy the public key from the local computer into the authorized_keys file(F:\quang\digitalocean\.ssh\designhouse.pub)
+        Exit and ssh again as the new user
+            ssh -i designhouse gabs@104.248.158.210
+    DISABLE ROOT LOGIN
+        ssh -i designhouse gabs@104.248.158.210
+        sudo vi /etc/ssh/sshd_config
+        set PermitRootLogin to no
+        Restart the sshd service
+            sudo service sshd restart
+        Exit from the server and try to login again as ROOT, which should fail. Login again as gabs
+            ssh -i designhouse root@104.248.158.210
+            ssh -i designhouse gabs@104.248.158.210
