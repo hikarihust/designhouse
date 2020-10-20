@@ -1168,4 +1168,14 @@ Enable FireWall (UFW)
     So now, Firewall is blocking all connections except SSH. So if you install and configure
         any additional services, you will need to adjust the firewall to allow connections for these
         services as well
+Install Nginx
+    About LEMP STACK -> (Linux, Nginx, MySQL, PHP)
+    ssh -i designhouse gabs@104.248.158.210
+    sudo apt update
+    sudo apt install nginx
+    Allow connections to NginX in the firewall
+        sudo ufw allow 'Nginx HTTP'
+        sudo ufw status
+    sudo service nginx status
+    Copy the IP Address from DO(104.248.158.210) and test it in the server. This should show the Nginx page
     
