@@ -1428,4 +1428,61 @@ Pull the API code from GitHub and setup Laravel permissions
         php artisan storage:link
     ls public/
         storage
+Configure Nginx to serve Laravel Application
+    ssh -i designhouse gabs@104.248.158.210 to login
+    dig designhouse.social
+        designhouse.social.     3600    IN      A       104.248.158.210
+    http://designhouse.social/
+    = http://104.248.158.210/
+    /home/gabs/api/designhouse-api/public(root Directory)
+    Create a new Nginx Server Block for our new site, similar to what we created in example.com before
+        sudo vim /etc/nginx/sites-available/designhouse.social
+        server {
+            listen 80;
+            server_name designhouse.social;
+            root /home/gabs/api/designhouse-api/public;
+
+            add_header X-Frame-Options "SAMEORIGIN";
+            add_header X-XSS-Protection "1; mode=block";
+            add_header X-Content-Type-Options "nosniff";
+
+            index index.html index.htm index.php;
+
+            charset utf-8;
+
+            location / {
+                try_files $uri $uri/ /index.php?$query_string;
+            }
+
+            # Serve static files directly
+            #location ~* ^/storage/(.*)\.(jpg|jpeg|gif|bmp|png|ico)$ {
+            #    access_log off;
+            #}
+
+            error_page 404 /index.php;
+
+            # handles php processing
+            location ~ \.php$ {
+                fastcgi_pass unix:/var/run/php/php7.3-fpm.sock;
+                fastcgi_index index.php;
+                fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+                include fastcgi_params;
+            }
+            
+            # prevent any .htaccess files from being served to the user
+            location ~ /\.(?!well-known).* {
+                deny all;
+            }
+        }
+    sudo nginx -t
+    sudo systemctl reload nginx
+    Turn off debugbar
+        vim .env 
+        APP_DEBUG=true -> APP_DEBUG=false
+    create symlink(if not creating)
+        sudo ln -s /etc/nginx/sites-available/shipping /etc/nginx/sites-enabled/
+    Visit the IP Address to check everything ok
+        http://designhouse.social/
+        http://104.248.158.210/
+        http://designhouse.social/api/designs 
     
