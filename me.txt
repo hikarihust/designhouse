@@ -1141,3 +1141,31 @@ Disable Root SSH and create new Sudo User
         Exit from the server and try to login again as ROOT, which should fail. Login again as gabs
             ssh -i designhouse root@104.248.158.210
             ssh -i designhouse gabs@104.248.158.210
+Enable FireWall (UFW)
+    ssh -i designhouse gabs@104.248.158.210
+    Enable Firewall (ufw – uncomplicated firewall) so that only connections to certain services
+        are allowed. Once enabled, some applications can register their profiles to this firewall when
+        installed
+    See the list of applications that currently have a profile on UFW. This lists OpenSSH,
+        which is the application that allows us to ssh into the server now
+        sudo ufw app list
+            Available applications:
+            OpenSSH
+    Make sure that the firewall allows SSH connections
+        sudo ufw allow OpenSSH
+    sudo ufw status
+        Status: inactive
+    Then Enable the firewall
+        sudo ufw enable
+        Command may disrupt existing ssh connections. Proceed with operation (y|n)? y
+    Check the firewall status
+        sudo ufw status
+        ->Status: active
+            To                         Action      From
+            --                         ------      ----
+            OpenSSH                    ALLOW       Anywhere
+            OpenSSH (v6)               ALLOW       Anywhere (v6)
+    So now, Firewall is blocking all connections except SSH. So if you install and configure
+        any additional services, you will need to adjust the firewall to allow connections for these
+        services as well
+    
