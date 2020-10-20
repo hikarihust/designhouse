@@ -1292,4 +1292,59 @@ Setup PHP for Nginx
         info.php
     then visit http://104.248.158.210/info.php
     then we can remove the info.php file
+Setup Composer and create MySQL Database for Laravel
+    Install the dependencies
+        sudo apt install curl php-cli php-mbstring git unzip
+    Download composer, verify that the package is not corrupt and then install it
+        go to your home directory
+            cd ~
+            curl -sS https://getcomposer.org/installer -o composer-setup.php
+            ls 
+                composer-setup.php
+    Install composer globally
+        sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+    Test composer
+        composer
+    Install other PHP modules required by Laravel
+        sudo apt install php-mbstring php-xml php-bcmath php7.2-gd
+    Create a MySQL Database(Database name is designhouse)
+        mysql -u root -p
+        Enter password: password
+        CREATE DATABASE designhouse;
+        show databases;
+            +--------------------+
+            | Database           |
+            +--------------------+
+            | information_schema |
+            | designhouse        |
+            | mysql              |
+            | performance_schema |
+            | sys                |
+            +--------------------+
+    Create a new user (gabs) and grant all permissions on the database to the user
+        GRANT ALL ON designhouse.* TO 'gabs'@'localhost' IDENTIFIED BY 'password';
+        exit
+    Test if the new user has access to the database
+        mysql -u gabs -p
+            Enter password: password
+        show databases; 
+        This user only has access to the database assigned to them
+            +--------------------+
+            | Database           |
+            +--------------------+
+            | information_schema |
+            | designhouse        |
+            +--------------------+
+        exit
+    mysql -u root -p
+        SELECT user, plugin, host from mysql.user;
+        +------------------+-----------------------+-----------+
+        | user             | plugin                | host      |
+        +------------------+-----------------------+-----------+
+        | root             | mysql_native_password | localhost |
+        | mysql.session    | mysql_native_password | localhost |
+        | mysql.sys        | mysql_native_password | localhost |
+        | debian-sys-maint | mysql_native_password | localhost |
+        | gabs             | mysql_native_password | localhost |
+        +------------------+-----------------------+-----------+
     
