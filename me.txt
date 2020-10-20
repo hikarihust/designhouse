@@ -1178,4 +1178,52 @@ Install Nginx
         sudo ufw status
     sudo service nginx status
     Copy the IP Address from DO(104.248.158.210) and test it in the server. This should show the Nginx page
+Install and configure MySQL
+    https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-ubuntu-18-04
+    ssh -i designhouse gabs@104.248.158.210
+    Install MySQL Server
+        sudo apt install mysql-server
+    The server comes with a script that allows us to change some insecure defaults
+        sudo mysql_secure_installation
+        Answer NO for VALIDATE PASSWORD PLUGIN
+        Enter a root password
+            password
+        Press YES and ENTER to remove anonymous users from the server and for all other options
+        Disallow root login remotely? (Press y|Y for Yes, any other key for No) : Y
+        Remove test database and access to it? (Press y|Y for Yes, any other key for No) : Y
+        Reload privilege tables now? (Press y|Y for Yes, any other key for No) : Y
+    Launch mysql and enable root password login (by default, it used socket authentication –
+        auth_socket - , which is ok but may cause issues if you want to login via password services
+        like PHPMyAdmin)
+        sudo mysql
+    Check which authentication method each MySQL user account is using
+        SELECT user, plugin, host from mysql.user;
+        +------------------+-----------------------+-----------+
+        | user             | plugin                | host      |
+        +------------------+-----------------------+-----------+
+        | root             | auth_socket           | localhost |
+        | mysql.session    | mysql_native_password | localhost |
+        | mysql.sys        | mysql_native_password | localhost |
+        | debian-sys-maint | mysql_native_password | localhost |
+        +------------------+-----------------------+-----------+
+    Change root user to authenticate with password instead of auth_socket
+        ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+    Flush priviledges so that the server can reload the grants table and apply your changes
+        FLUSH PRIVILEGES;
+    Check he query again
+        SELECT user, plugin, host from mysql.user;
+        +------------------+-----------------------+-----------+
+        | user             | plugin                | host      |
+        +------------------+-----------------------+-----------+
+        | root             | mysql_native_password | localhost |
+        | mysql.session    | mysql_native_password | localhost |
+        | mysql.sys        | mysql_native_password | localhost |
+        | debian-sys-maint | mysql_native_password | localhost |
+        +------------------+-----------------------+-----------+
+    exit
+    Because we have changed the root login to use password, we can no longer access mysql using
+        sudo mysql # will no longer work
+        mysql -u root -p # will now work
+        Enter password: password 
+    show databases;
     
