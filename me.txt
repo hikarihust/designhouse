@@ -1680,4 +1680,12 @@ Configure Free SSL Certificate
         designhouse
     npm run build
     pm2 restart designhouse
+Connect to Database by SSH
+    SSH Host: 104.248.158.210
+    SSH User: gabs
+    SSH key file: designhouse
+    MySql HostName: 127.0.0.1
+    MySql Server Port: 3306
+    UserName: gabs
+    Password: password
     
